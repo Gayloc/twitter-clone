@@ -3,10 +3,11 @@
 推特山寨版
 
 ## 技术栈
-- nuxt
-- nitro
-- vue
-- vuetify
+- [nuxt3](https://nuxt.com/)
+- [nitro](https://nitro.unjs.io/)
+- [vue](https://vuejs.org/)
+- [Vuetify Nuxt Module](https://vuetify-nuxt-module.netlify.app/)
+- [sidebase/nuxt-auth](https://sidebase.io/nuxt-auth/getting-started)
 
 ## 功能需求
 
