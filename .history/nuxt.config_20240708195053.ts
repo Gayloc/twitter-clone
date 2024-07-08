@@ -7,7 +7,7 @@ export default {
     '@nuxtjs/stylelint-module', // With options
     ['@nuxtjs/stylelint-module', { /* module options */ }], "vuetify-nuxt-module", "@nuxt/eslint"],
   serverMiddleware: [
-    { path: '/api', handler: '~/api/tweets.ts' },
+    { path: '/api', handler: '~/api/tweets.ts' }
   ],
 
   vuetify: {
