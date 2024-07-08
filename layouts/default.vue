@@ -1,18 +1,18 @@
 <template>
     <v-app>
-      <Navbar />
+      <NavBar />
       <v-main>
-        <slot></slot>
+        <slot/>
       </v-main>
     </v-app>
   </template>
   
   <script>
-  import Navbar from '~/components/Navbar.vue'
+  import NavBar from '~/components/NavBar.vue'
   
   export default {
     components: {
-      Navbar
+      NavBar
     }
   }
 </script>
