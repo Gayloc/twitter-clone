@@ -3,11 +3,9 @@
 export default {
   devtools: { enabled: true },
   compatibilityDate: '2024-07-08',
-    modules: [// Simple usage
-    '@nuxtjs/stylelint-module', // With options
-    ['@nuxtjs/stylelint-module', { /* module options */ }], "vuetify-nuxt-module", "@nuxt/eslint"],
+  modules: ["vuetify-nuxt-module"],
   serverMiddleware: [
-    { path: '/api', handler: '~/api/tweets.ts' },
+    { path: '/api', handler: '~/api/tweets.ts' }
   ],
 
   vuetify: {
@@ -27,4 +25,11 @@ export default {
       }
     }
     },
+    modules: [
+        // Simple usage
+        '@nuxtjs/stylelint-module',
+
+        // With options
+        ['@nuxtjs/stylelint-module', { /* module options */ }]
+      ]
 };
