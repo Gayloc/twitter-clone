@@ -4,14 +4,9 @@ export default {
   devtools: { enabled: true },
   compatibilityDate: '2024-07-08',
   modules: ["vuetify-nuxt-module", "@nuxt/eslint"],
-  // esline: {
-  //   config: {
-  //     stylke: true,
-  //   }
-  // },
-  // serverMiddleware: [
-  //   { path: '/api', handler: '~/api/tweets.ts' }
-  // ],
+  serverMiddleware: [
+    { path: '/api', handler: '~/api/tweets.ts' }
+  ],
 
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
