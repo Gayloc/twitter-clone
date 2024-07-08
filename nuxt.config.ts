@@ -3,7 +3,7 @@
 export default {
   devtools: { enabled: true },
   compatibilityDate: '2024-07-08',
-  modules: ["vuetify-nuxt-module", "@nuxt/eslint"],
+  modules: ['vuetify-nuxt-module', '@nuxt/eslint'],
   // esline: {
   //   config: {
   //     stylke: true,
@@ -12,6 +12,17 @@ export default {
   // serverMiddleware: [
   //   { path: '/api', handler: '~/api/tweets.ts' }
   // ],
+
+  app: {
+    head: {
+      title: '推特山寨版',
+      meta: [
+        { name: 'description', content: 'Web应用开发期末大作业' },
+        { name: 'keyword', content: 'twitter' }
+      ],
+      link: [{ rel: 'icon', type: 'image/x-icon', href: 'icon.png' }]
+    }
+  },
 
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
@@ -30,4 +41,4 @@ export default {
       }
     }
   }
-};
+}
