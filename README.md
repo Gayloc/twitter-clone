@@ -1,75 +1,27 @@
-# Nuxt 3 Minimal Starter
+# Twitter Clone
+推特山寨版
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## 技术栈
+- nuxt
+- nitro
+- vue
+- vuetify
 
-## Setup
+## 功能需求
 
-Make sure to install the dependencies:
+### 用户管理
+- [ ] 登陆
+- [ ] 注册
+- [ ] 注销
+- [ ] 用户资料
+    - [ ] 头像
+    - [ ] 邮箱
+    - [ ] 名称
+    - [ ] id
+- [ ] 关注
+- [ ] 粉丝
 
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+### 推文管理
+- [ ] 发布
+- [ ] 删除
+- [ ] 修改
