@@ -3,9 +3,6 @@
 export default {
   devtools: { enabled: true },
   compatibilityDate: '2024-07-08',
-<<<<<<< HEAD
-  modules: ['vuetify-nuxt-module', '@nuxt/eslint' , '@pinia/nuxt'],
-=======
   modules: ['vuetify-nuxt-module', '@nuxt/eslint'],
   // esline: {
   //   config: {
@@ -15,7 +12,6 @@ export default {
   // serverMiddleware: [
   //   { path: '/api', handler: '~/api/tweets.ts' }
   // ],
->>>>>>> e6d451e5dcec6b9eee28239d57b2c0aa5726357d
 
   vuetify: {
     moduleOptions: {
@@ -53,8 +49,4 @@ export default {
       }
     }
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> e6d451e5dcec6b9eee28239d57b2c0aa5726357d

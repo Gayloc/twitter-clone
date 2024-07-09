@@ -12,13 +12,8 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "@nuxtjs/vuetify": "^1.12.3",
-    "@pinia/nuxt": "^0.5.1",
-=======
     "@nuxt/types": "^2.18.1",
     "@vueuse/core": "^10.11.0",
->>>>>>> e6d451e5dcec6b9eee28239d57b2c0aa5726357d
     "nuxt": "^3.12.3",
     "vue": "latest",
     "vuetify-nuxt-module": "^0.14.1"
