@@ -2,13 +2,22 @@
   <v-card class="mb-3" @click="goToDetail">
     <v-card-text>{{ tweet.content }}</v-card-text>
     <v-card-actions>
-      <v-btn text @click.stop="likeTweet">Like</v-btn>
-      <v-btn text @click.stop="commentOnTweet">Comment</v-btn>
+      <v-btn icon @click.stop="likeTweet">
+        <v-icon v-if="isLike">
+          mdi-thumb-up
+        </v-icon>
+        <v-icon v-else>
+          mdi-thumb-up-outline
+        </v-icon>
+      </v-btn>
+      <v-btn icon="mdi-comment-outline" @click.stop="commentOnTweet"/>
     </v-card-actions>
   </v-card>
 </template>
 
 <script setup>
+const isLike = ref(false)
+
 const props = defineProps({
   tweet: {
     type: Object,
@@ -24,6 +33,7 @@ const goToDetail = () => {
 };
 
 const likeTweet = () => {
+  isLike.value = !isLike.value
   // 发送点赞请求
 };
 
