@@ -3,7 +3,7 @@
 export default {
   devtools: { enabled: true },
   compatibilityDate: '2024-07-08',
-  modules: ['vuetify-nuxt-module', '@nuxt/eslint'],
+  modules: ['vuetify-nuxt-module', '@nuxt/eslint', '@nuxtjs/color-mode'],
   // esline: {
   //   config: {
   //     stylke: true,
@@ -12,6 +12,11 @@ export default {
   // serverMiddleware: [
   //   { path: '/api', handler: '~/api/tweets.ts' }
   // ],
+
+  colorMode: {
+    preference: 'system', // default value of $colorMode.preference
+    fallback: 'light', // fallback value if not system preference found
+  },
 
   vuetify: {
     moduleOptions: {
@@ -26,7 +31,6 @@ export default {
     },
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      defaultTheme: 'system',
       themes: {
         dark: {
           primary: '#1976D2',

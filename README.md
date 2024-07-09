@@ -9,6 +9,7 @@
 - [Vuetify Nuxt Module](https://vuetify-nuxt-module.netlify.app/)
 - [sidebase/nuxt-auth](https://sidebase.io/nuxt-auth/getting-started)
 - [vueuse](https://vueuse.org/)
+- [colorMode](https://color-mode.nuxtjs.org/)
 
 ## 功能需求
 
