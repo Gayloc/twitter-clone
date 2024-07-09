@@ -12,7 +12,7 @@ export function useCustomTheme() {
   const isDark = useDark({
     valueDark: 'dark',
     valueLight: 'light',
-    initialValue: isPreferredDark ? 'dark' : 'light',
+    initialValue: isPreferredDark ? 'light' : 'dark',
     onChanged: (dark: boolean) => {
       if ($vuetify.theme && $vuetify.theme.global) {
         $vuetify.theme.global.name.value = dark ? 'dark' : 'light'
