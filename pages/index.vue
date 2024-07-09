@@ -1,12 +1,14 @@
 <template>
   <v-container>
-    <v-row>
-      <v-col cols="12">
-        <TweetCard v-for="tweet in tweets" :key="tweet.id" :tweet="tweet" />
-      </v-col>
+    <v-row v-if="tweets" class="d-flex flex-wrap">
+        <v-col v-for="tweet in tweets" :key="tweet.id" cols="12" md="6" lg="4">
+          <TweetCard :tweet="tweet" />
+        </v-col>
     </v-row>
+    <v-alert v-else type="info">Loading...</v-alert>
   </v-container>
 </template>
+
 
 <script setup>
 import TweetCard from '~/components/TweetCard.vue';
