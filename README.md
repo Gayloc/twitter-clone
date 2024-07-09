@@ -3,10 +3,12 @@
 推特山寨版
 
 ## 技术栈
-- nuxt
-- nitro
-- vue
-- vuetify
+- [nuxt3](https://nuxt.com/)
+- [nitro](https://nitro.unjs.io/)
+- [vue](https://vuejs.org/)
+- [Vuetify Nuxt Module](https://vuetify-nuxt-module.netlify.app/)
+- [sidebase/nuxt-auth](https://sidebase.io/nuxt-auth/getting-started)
+- [vueuse](https://vueuse.org/)
 
 ## 功能需求
 
@@ -29,3 +31,17 @@
 - [ ] 评论
 - [ ] 点赞
 - [ ] 获取推荐
+
+### 推文组成
+- [ ] 正文
+- [ ] 多媒体
+    - [ ] 图片
+    - [ ] 视频
+    - [ ] 音频
+- [ ] 评论区
+- [ ] 相关数据
+    - [ ] 喜欢
+    - [ ] 转发
+  
+### 杂项小功能
+- [x] 深色模式主题切换

@@ -6,8 +6,8 @@
             <v-card-title class="headline">Login</v-card-title>
             <v-card-text>
               <v-form>
-                <v-text-field label="Email" v-model="email" required></v-text-field>
-                <v-text-field label="Password" v-model="password" type="password" required></v-text-field>
+                <v-text-field v-model="email" label="Email" required/>
+                <v-text-field v-model="password" label="Password" type="password" required/>
               </v-form>
             </v-card-text>
             <v-card-actions>

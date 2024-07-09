@@ -1,19 +1,15 @@
 <template>
-    <v-app>
-      <Navbar />
-      <v-main>
-        <slot></slot>
-      </v-main>
-    </v-app>
-  </template>
-  
-  <script>
-  import Navbar from '~/components/Navbar.vue'
-  
-  export default {
-    components: {
-      Navbar
-    }
-  }
+  <v-app :dark="isDark">
+    <NavBar />
+    <v-main>
+      <slot />
+    </v-main>
+  </v-app>
+</template>
+
+<script setup>
+import NavBar from '~/components/NavBar.vue'
+import { useCustomTheme } from '~/composables/useCustomTheme'
+
+const { isDark } = useCustomTheme()
 </script>
-  
