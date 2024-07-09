@@ -23,6 +23,11 @@ export default {
         prefersColorScheme: true
       }
     },
+    vuetifyOptions: {
+      icons: {
+        defaultSet: 'mdi'
+      }
+    },
     customVariables: ['~/assets/variables.scss'],
     theme: {
       defaultTheme: 'system',
