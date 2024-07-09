@@ -1,15 +1,16 @@
 <template>
-  <v-app :dark="isDark">
-    <NavBar />
-    <v-main>
-      <slot />
-    </v-main>
-  </v-app>
+  <ColorScheme placeholder="..." tag="span">
+    <v-app :theme="$colorMode.value">
+      <NavBar />
+      <v-main>
+        <slot />
+      </v-main>
+    </v-app>
+  </ColorScheme>
 </template>
 
 <script setup>
 import NavBar from '~/components/NavBar.vue'
-import { useCustomTheme } from '~/composables/useCustomTheme'
-
-const { isDark } = useCustomTheme()
+const colorMode = useColorMode()
+colorMode.preference = 'system'
 </script>
