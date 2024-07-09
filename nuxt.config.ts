@@ -14,10 +14,24 @@ export default {
   // ],
 
   vuetify: {
+    moduleOptions: {
+      ssrClientHints: {
+        prefersColorScheme: true
+      }
+    },
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: false,
+      defaultTheme: 'system',
       themes: {
+        dark: {
+          primary: '#1976D2',
+          secondary: '#424242',
+          accent: '#82B1FF',
+          error: '#FF5252',
+          info: '#2196F3',
+          success: '#4CAF50',
+          warning: '#FB8C00'
+        },
         light: {
           primary: '#1976D2',
           secondary: '#424242',
@@ -25,7 +39,7 @@ export default {
           error: '#FF5252',
           info: '#2196F3',
           success: '#4CAF50',
-          warning: '#FFC107'
+          warning: '#FB8C00'
         }
       }
     }

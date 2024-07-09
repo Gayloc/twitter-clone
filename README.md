@@ -8,6 +8,7 @@
 - [vue](https://vuejs.org/)
 - [Vuetify Nuxt Module](https://vuetify-nuxt-module.netlify.app/)
 - [sidebase/nuxt-auth](https://sidebase.io/nuxt-auth/getting-started)
+- [vueuse](https://vueuse.org/)
 
 ## 功能需求
 
