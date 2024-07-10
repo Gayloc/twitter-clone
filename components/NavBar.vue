@@ -10,11 +10,17 @@
 </template>
 
 <script setup>
-import { useCustomTheme } from '~/composables/useCustomTheme'
-
-const { toggleTheme } = useCustomTheme()
-
 const router = useRouter();
+const colorMode = useColorMode();
+
+const toggleTheme = () => {
+    console.log(colorMode.value)
+    if (colorMode.value === 'light') {
+        colorMode.preference = 'dark'
+    } else if (colorMode.value === 'dark') {
+        colorMode.preference = 'light'
+    }
+}
 
 const goBack = () => {
     router.go(-1);
