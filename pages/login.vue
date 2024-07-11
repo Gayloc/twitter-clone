@@ -12,6 +12,7 @@
           </v-card-text>
           <v-card-actions class="d-flex justify-end">
             <v-btn color="primary" @click="login">Login</v-btn>
+            <v-btn color="secondary" to="/register">Register</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
