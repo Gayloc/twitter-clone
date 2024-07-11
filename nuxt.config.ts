@@ -3,7 +3,12 @@
 export default {
   devtools: { enabled: true },
   compatibilityDate: '2024-07-08',
-  modules: ['vuetify-nuxt-module', '@nuxt/eslint', '@nuxtjs/color-mode'],
+  modules: [
+    'vuetify-nuxt-module',
+    '@nuxt/eslint',
+    '@nuxtjs/color-mode',
+    "@nuxtjs/i18n"
+  ],
   // esline: {
   //   config: {
   //     stylke: true,
@@ -12,6 +17,12 @@ export default {
   // serverMiddleware: [
   //   { path: '/api', handler: '~/api/tweets.ts' }
   // ],
+
+  i18n: {
+    vueI18n: './i18n.config.ts', // if you are using custom path, default
+    locales: ['en', 'zh'], // used in URL path prefix
+    default: 'en'
+  },
 
   colorMode: {
     preference: 'system', // default value of $colorMode.preference
