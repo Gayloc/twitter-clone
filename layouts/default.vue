@@ -1,6 +1,7 @@
 <template>
-  <ColorScheme placeholder="..." tag="span">
-    <v-app :theme="$colorMode.value">
+  <ColorScheme placeholder="加载中" tag="span">
+    <v-app>
+      {{ $vuetify.theme.global.name = $colorMode.value }}
       <NavBar />
       <v-main>
         <slot />
