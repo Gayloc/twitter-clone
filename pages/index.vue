@@ -5,7 +5,7 @@
           <TweetCard :tweet="tweet" />
         </v-col>
     </v-row>
-    <v-alert v-else type="info">Loading...</v-alert>
+    <v-alert v-else type="info">{{ $t('loading') }}</v-alert>
   </v-container>
 </template>
 

@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@nuxt/types": "^2.18.1",
+    "@nuxtjs/i18n": "^8.3.1",
     "@vueuse/core": "^10.11.0",
     "nuxt": "^3.12.3",
     "vue": "latest",
@@ -23,6 +24,7 @@
     "@nuxt/eslint-config": "^0.3.13",
     "@nuxtjs/color-mode": "^3.4.2",
     "@types/express": "^4.17.21",
+    "better-sqlite3": "^9.6.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",

@@ -6,7 +6,7 @@
                     <v-card-title class="headline">{{ tweet.title }}</v-card-title>
                     <v-card-text>{{ tweet.content }}</v-card-text>
                 </v-card>
-                <v-alert v-else type="info">Loading...</v-alert>
+                <v-alert v-else type="info">{{ $t('loading') }}</v-alert>
             </v-col>
         </v-row>
     </v-container>

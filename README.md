@@ -6,10 +6,14 @@
 - [nuxt3](https://nuxt.com/)
 - [nitro](https://nitro.unjs.io/)
 - [vue](https://vuejs.org/)
+- [vuetify](https://vuetifyjs.com/zh-Hans/)
 - [Vuetify Nuxt Module](https://vuetify-nuxt-module.netlify.app/)
 - [sidebase/nuxt-auth](https://sidebase.io/nuxt-auth/getting-started)
 - [vueuse](https://vueuse.org/)
 - [colorMode](https://color-mode.nuxtjs.org/)
+- [vuei18n](https://vue-i18n.intlify.dev/)
+- [mdi](https://pictogrammers.com/library/mdi/)
+- [nuxt/i18n](https://i18n.nuxtjs.org/)
 
 ## 功能需求
 
