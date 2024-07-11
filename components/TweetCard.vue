@@ -17,6 +17,7 @@
 
 <script setup>
 const isLike = ref(false)
+const localePath = useLocalePath();
 
 const props = defineProps({
   tweet: {
@@ -29,7 +30,7 @@ const { tweet } = toRefs(props);
 const router = useRouter();
 
 const goToDetail = () => {
-  router.push(`/detail/${tweet.value.id}`);
+  router.push(localePath(`/detail/${tweet.value.id}`));
 };
 
 const likeTweet = () => {
