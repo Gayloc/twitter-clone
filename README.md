@@ -11,6 +11,9 @@
 - [sidebase/nuxt-auth](https://sidebase.io/nuxt-auth/getting-started)
 - [vueuse](https://vueuse.org/)
 - [colorMode](https://color-mode.nuxtjs.org/)
+- [vuei18n](https://vue-i18n.intlify.dev/)
+- [mdi](https://pictogrammers.com/library/mdi/)
+- [nuxt/i18n](https://i18n.nuxtjs.org/)
 
 ## 功能需求
 

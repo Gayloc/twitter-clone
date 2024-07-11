@@ -20,8 +20,9 @@ export default {
 
   i18n: {
     vueI18n: './i18n.config.ts', // if you are using custom path, default
-    locales: ['en', 'zh'], // used in URL path prefix
-    default: 'en'
+    locales: ['zh', 'en'],
+    strategy: 'prefix_except_default', 
+    defaultLocale: 'zh'
   },
 
   colorMode: {
