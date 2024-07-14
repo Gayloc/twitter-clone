@@ -10,7 +10,7 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "postbuild": "ts-node scripts/init-db.ts"
+    "postbuild": "npx ts-node scripts/init-db.ts"
   },
   "dependencies": {
     "@nuxt/types": "^2.18.1",
@@ -20,6 +20,7 @@
     "bcrypt": "^5.1.1",
     "jsonwebtoken": "^9.0.2",
     "nuxt": "^3.12.3",
+    "ts-node": "^10.9.2",
     "vue": "latest",
     "vuetify-nuxt-module": "^0.14.1"
   },
