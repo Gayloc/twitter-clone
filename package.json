@@ -10,7 +10,7 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "postbuild": "npx ts-node scripts/init-db.ts"
+    "postbuild": "npx ts-node scripts/init-db.js"
   },
   "dependencies": {
     "@nuxt/types": "^2.18.1",
