@@ -9,7 +9,6 @@
   </v-container>
 </template>
 
-
 <script setup>
 import TweetCard from '~/components/TweetCard.vue';
 
