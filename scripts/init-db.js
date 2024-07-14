@@ -1,13 +1,15 @@
 import fs from 'fs';
 import path from 'path';
+import { createDatabase } from "db0";
+import sqlite from "db0/connectors/better-sqlite3";
 
 async function initDatabase() {
-    const db = useDatabase();
-    const sqlFilePath = path.join(__dirname, 'db.sql'); 
+    const db = createDatabase(sqlite({}));
+    const sqlFilePath = path.join('scripts', 'db.sql'); 
     const sql = fs.readFileSync(sqlFilePath, 'utf8');
   
     try {
-      await db.sql`${sql}`;
+      await db.exec(sql);
       console.log('Database initialized successfully.');
     } catch (error) {
       console.error('Error initializing database:', error);
