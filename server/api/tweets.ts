@@ -1,14 +1,8 @@
-export default defineEventHandler(() => {
+export default defineEventHandler(async () => {
+  const db = useDatabase();
+  const { rows } = await db.sql`SELECT * FROM Tweets ORDER BY created_at DESC LIMIT 10`;
+
   return {
-    data: [
-      {
-        id: 1,
-        content: 'xxx'
-      },
-      {
-        id: 2,
-        content: 'xxx'
-      }
-    ]
+    data: rows
   }
 })

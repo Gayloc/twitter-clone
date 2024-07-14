@@ -9,12 +9,16 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "postbuild": "ts-node scripts/init-db.ts"
   },
   "dependencies": {
     "@nuxt/types": "^2.18.1",
     "@nuxtjs/i18n": "^8.3.1",
+    "@sidebase/nuxt-auth": "^0.6.7",
     "@vueuse/core": "^10.11.0",
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
     "nuxt": "^3.12.3",
     "vue": "latest",
     "vuetify-nuxt-module": "^0.14.1"
@@ -23,7 +27,9 @@
     "@nuxt/eslint": "^0.3.13",
     "@nuxt/eslint-config": "^0.3.13",
     "@nuxtjs/color-mode": "^3.4.2",
+    "@types/bcrypt": "^5.0.2",
     "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
     "better-sqlite3": "^9.6.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",

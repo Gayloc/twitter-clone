@@ -7,7 +7,8 @@ export default {
     'vuetify-nuxt-module',
     '@nuxt/eslint',
     '@nuxtjs/color-mode',
-    "@nuxtjs/i18n"
+    "@nuxtjs/i18n",
+    '@sidebase/nuxt-auth'
   ],
   // esline: {
   //   config: {
@@ -17,6 +18,36 @@ export default {
   // serverMiddleware: [
   //   { path: '/api', handler: '~/api/tweets.ts' }
   // ],
+
+  auth: {
+    provider: {
+      type: 'local',
+      user: {
+        endpoint: '/api/auth/user'
+      },
+      login: {
+        endpoint: '/api/auth/login'
+      },
+      register: {
+        endpoint: '/api/auth/register'
+      },
+      logout: {
+        endpoint: '/api/auth/logout'
+      },
+    },
+    redirect: {
+      login: '/login',
+      logout: '/',
+      home: '/',
+    },
+    globalAppMiddleware: false,
+  },
+
+  nitro: {
+    experimental: {
+      database: true
+    }
+  },
 
   i18n: {
     vueI18n: './i18n.config.ts', // if you are using custom path, default

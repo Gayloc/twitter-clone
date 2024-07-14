@@ -30,7 +30,7 @@ const { tweet } = toRefs(props);
 const router = useRouter();
 
 const goToDetail = () => {
-  router.push(localePath(`/detail/${tweet.value.id}`));
+  router.push(localePath(`/detail/${tweet.value.tweet_id}`));
 };
 
 const likeTweet = () => {
