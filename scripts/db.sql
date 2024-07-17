@@ -65,7 +65,7 @@ CREATE TABLE Media (
 CREATE TABLE Avatar (
     avatar_id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL,
-    media_url TEXT NOT NULL,
+    avatar_url TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users (user_id)
 );
