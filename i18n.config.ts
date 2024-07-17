@@ -13,7 +13,8 @@ export default defineI18nConfig(() => ({
       emailAndPasswordCantBeEmpty: 'Email and password cant be empty',
       fieldIsRequired: 'Field is required',
       username: 'Username',
-      registerInfoCantBeEmpty: 'Register info cant be empty'
+      registerInfoCantBeEmpty: 'Register info cant be empty',
+      logout: 'Log out'
     },
     zh: {
       welcome: '你好',
@@ -27,7 +28,8 @@ export default defineI18nConfig(() => ({
       emailAndPasswordCantBeEmpty: '邮箱和密码不能为空',
       fieldIsRequired: '该项为必填项',
       username: '用户名',
-      registerInfoCantBeEmpty: '注册信息不能为空'
+      registerInfoCantBeEmpty: '注册信息不能为空',
+      logout: '退出登录'
     }
   }
 }))

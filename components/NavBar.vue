@@ -6,7 +6,7 @@
         <v-btn icon="mdi-translate" @click="setLocale(locale === 'en' ? 'zh' : 'en')" />
         <v-btn icon="mdi-theme-light-dark" @click="toggleTheme()"/>
         <v-btn icon="mdi-home" :to="localePath('/')"/>
-        <v-btn icon="mdi-account" :to="localePath('/login')"/>
+        <v-btn icon="mdi-account" :to="localePath('/account')"/>
     </v-app-bar>
 </template>
 
