@@ -1,7 +1,10 @@
 <template>
     <v-container v-if="user != null">
         <v-card>
-            <v-card-title class="headline">{{ user.username }}</v-card-title>
+            <Avatar></Avatar>
+            <v-card-title class="headline">
+                {{ user.username }}
+            </v-card-title>
             <v-card-text>
                 {{ user.email }}
             </v-card-text>
@@ -17,6 +20,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import Avatar from '~/components/Avatar.vue';
 
 const user = ref(null);
 const error = ref(null)

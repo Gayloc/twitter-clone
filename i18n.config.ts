@@ -14,7 +14,9 @@ export default defineI18nConfig(() => ({
       fieldIsRequired: 'Field is required',
       username: 'Username',
       registerInfoCantBeEmpty: 'Register info cant be empty',
-      logout: 'Log out'
+      logout: 'Log out',
+      changeAvatar: 'Change avatar',
+      greeting: 'See what is here'
     },
     zh: {
       welcome: '你好',
@@ -29,7 +31,9 @@ export default defineI18nConfig(() => ({
       fieldIsRequired: '该项为必填项',
       username: '用户名',
       registerInfoCantBeEmpty: '注册信息不能为空',
-      logout: '退出登录'
+      logout: '退出登录',
+      changeAvatar: '更改头像',
+      greeting: '看看有什么新鲜事'
     }
   }
 }))
