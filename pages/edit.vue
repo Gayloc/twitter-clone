@@ -6,7 +6,7 @@
                     <v-card-title>{{ $t('newTweetEdit') }}</v-card-title>
                     <v-card-text>
                         <v-form>
-                            <v-textarea :label="$t('content')" v-model="content"></v-textarea>
+                            <v-textarea :label="$t('content')" v-model="content" auto-grow></v-textarea>
                         </v-form>
                     </v-card-text>
                     <MediaEditor ref="mediaEditorRef"></MediaEditor>
