@@ -23,6 +23,7 @@ export default defineI18nConfig(() => ({
       inputImage: 'Input image',
       inputImageFirst: 'Input image first',
       noSelectedFile: 'No selected file',
+      newTweet: 'New Tweet',
       $vuetify: {
         input: {
           prependAction: 'Add image',
@@ -52,6 +53,7 @@ export default defineI18nConfig(() => ({
       inputImage: '上传一张图片',
       inputImageFirst: '请先上传一张图片',
       noSelectedFile: '未选择文件',
+      newTweet: '新推文',
       $vuetify: {
         input: {
           prependAction: '添加图片',

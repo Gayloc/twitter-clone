@@ -8,6 +8,9 @@
         <v-card-title>{{ $t('welcome')+' '+username }}</v-card-title>
         <v-card-text>{{ $t('greeting') }}</v-card-text>
       </v-container>
+      <v-card-actions>
+        <v-btn text :to="localePath('/edit')">{{ $t('newTweet') }}</v-btn>
+      </v-card-actions>
     </v-card>
     <v-row v-if="tweets" class="d-flex flex-wrap">
       <v-col v-for="tweet in tweets" :key="tweet.tweet_id" cols="12" md="6" lg="4">
@@ -27,6 +30,7 @@ const { data: tweets } = await $fetch("/api/tweets", {
 
 const src = ref('')
 const username = ref('')
+const localePath = useLocalePath()
 
 onMounted(async () => {
         const data = await $fetch('/api/auth/user');

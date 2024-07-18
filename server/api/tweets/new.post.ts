@@ -20,8 +20,17 @@ export default defineEventHandler(async (event) => {
 
     try {
         await db.sql`INSERT INTO Tweets (user_id, content) VALUES (${newTweet.user_id}, ${newTweet.content})`;
+        const { rows } = await db.sql`SELECT * FROM Tweets WHERE user_id = ${newTweet.user_id} ORDER BY created_at DESC LIMIT 1`;
+        if (rows == undefined) {
+            throw createError({
+                statusCode: 401,
+                message: 'Create tweet failed'
+            })
+        }
+
         return {
             success: true,
+            tweet_id: rows[0].tweet_id,
             message: 'Tweet created successfully'
         }
     } catch (error) {

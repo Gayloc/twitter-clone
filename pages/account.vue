@@ -20,10 +20,11 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import Avatar from '~/components/Avatar.vue';
+import Avatar from '~/components/AvatarEditor.vue';
 
 const user = ref(null);
 const error = ref(null)
+const localePath = useLocalePath()
 
 onMounted(async () => {
     try {
@@ -31,7 +32,7 @@ onMounted(async () => {
         user.value = data.user;
     } catch (err) {
         if (err.statusCode == 401) {
-            navigateTo('/login')
+            navigateTo(localePath('/login'))
         } else {
             error.value = err
         }
@@ -42,7 +43,7 @@ const logout = async () => {
     try {
         const result = await $fetch('/api/auth/logout');
         if (result.success) {
-            navigateTo('/')
+            navigateTo(localePath('/'))
         } else {
             error.value = result.message
         }
