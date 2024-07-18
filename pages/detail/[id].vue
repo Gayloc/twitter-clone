@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-row class="d-flex justify-center">
-            <v-col cols="12" md="8">
+            <v-col>
                 <v-card v-if="tweet">
                     <v-card-title class="headline">{{ tweet.content }}</v-card-title>
                     <v-card-text>{{ tweet.content }}</v-card-text>

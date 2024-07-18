@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card image="/card-image.jpg" class="d-flex align-center" color="black">
+    <v-card image="/card-image.jpg" class="d-flex align-center head-card" color="black">
       <v-avatar size="200" v-if="src.length>0">
         <v-img cover :src='src'></v-img>
       </v-avatar>
@@ -37,3 +37,9 @@ onMounted(async () => {
         username.value = data.user.username;
 });
 </script>
+
+<style scoped>
+.head-card {
+  margin-bottom: 20px;
+}
+</style>
