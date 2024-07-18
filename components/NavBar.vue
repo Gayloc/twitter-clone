@@ -30,4 +30,3 @@ const goBack = () => {
 }
 </script>
 
-<style scoped></style>

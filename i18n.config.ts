@@ -33,10 +33,19 @@ export default defineI18nConfig(() => ({
       none: 'None',
       images: 'Images',
       video: 'Video',
+      joinTime: 'Join time',
+      noTweets: 'No Tweets. Post One!',
       $vuetify: {
         input: {
           prependAction: 'Add image',
           clear: 'Clear'
+        },
+        carousel: {
+          ariaLabel: {
+            delimiter: 'image {0}/{1}'
+          },
+          prev: 'Previous',
+          next: 'Next'
         }
       }
     },
@@ -72,10 +81,19 @@ export default defineI18nConfig(() => ({
       none: '无',
       images: '图片',
       video: '视频',
+      joinTime: '注册时间',
+      noTweets: '还没有推文，快发布一个吧！',
       $vuetify: {
         input: {
           prependAction: '添加图片',
           clear: '清除'
+        },
+        carousel: {
+          ariaLabel: {
+            delimiter: '幻灯片 {0}/{1}'
+          },
+          prev: '上一个',
+          next: '下一个'
         }
       }
     }

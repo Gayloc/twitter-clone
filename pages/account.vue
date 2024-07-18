@@ -6,7 +6,9 @@
                 {{ user.username }}
             </v-card-title>
             <v-card-text>
-                {{ user.email }}
+                {{ $t('email') + ' ' + user.email }}
+                <br>
+                {{ $t('joinTime') + ' ' + userTime }}
             </v-card-text>
             <v-card-actions>
                 <v-btn text @click.stop="logout">{{ $t('logout') }}</v-btn>
@@ -21,15 +23,19 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import Avatar from '~/components/AvatarEditor.vue';
+import moment from 'moment-timezone';
 
 const user = ref(null);
 const error = ref(null)
 const localePath = useLocalePath()
+const userTime = ref('')
 
 onMounted(async () => {
     try {
         const data = await $fetch('/api/auth/user');
         user.value = data.user;
+        const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        userTime.value = moment.utc(user.value.created_at).tz(userTimeZone).format('YYYY-MM-DD HH:mm:ss');
     } catch (err) {
         if (err.statusCode == 401) {
             navigateTo(localePath('/login'))
