@@ -3,7 +3,7 @@
         <v-row>
             <v-col>
                 <v-btn class="button">
-                    MediaSelector
+                    {{ $t('MediaSelector') }}
                     <v-menu activator="parent">
                         <v-list>
                             <v-list-item v-for="(item, index) in items" :key="index" :value="index"
@@ -14,9 +14,9 @@
                     </v-menu>
                 </v-btn>
 
-                <v-file-input :label="'uploadImages'" v-model="imageFiles" accept="image/*" multiple
+                <v-file-input :label="$t('uploadImages')" v-model="imageFiles" accept="image/*" multiple
                     v-if="selectedMedia == 1" @change="handleFileChange"></v-file-input>
-                <v-file-input :label="'uploadvideo'" v-model="videoFile" accept="video/*"
+                <v-file-input :label="$t('uploadvideo')" v-model="videoFile" accept="video/*"
                     v-if="selectedMedia == 2"></v-file-input>
             </v-col>
         </v-row>
@@ -30,10 +30,12 @@ const handleFileChange = () => {
 };
 
 const videoFile = ref(null)
+
+const { t } = useI18n()
 const items = ref([
-    'none',
-    'images',
-    'video'
+    t('none'),
+    t('images'),
+    t('video')
 ])
 
 const selectedMedia = ref(0)

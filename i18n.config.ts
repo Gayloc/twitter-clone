@@ -24,6 +24,15 @@ export default defineI18nConfig(() => ({
       inputImageFirst: 'Input image first',
       noSelectedFile: 'No selected file',
       newTweet: 'New Tweet',
+      MediaSelector: 'Media selector',
+      newTweetEdit: 'Edit new tweet',
+      content: 'Content',
+      post: 'Post',
+      uploadImages: 'Upload images',
+      uploadvideo: 'Upload Video',
+      none: 'None',
+      images: 'Images',
+      video: 'Video',
       $vuetify: {
         input: {
           prependAction: 'Add image',
@@ -54,6 +63,15 @@ export default defineI18nConfig(() => ({
       inputImageFirst: '请先上传一张图片',
       noSelectedFile: '未选择文件',
       newTweet: '新推文',
+      MediaSelector: '选择附件类型',
+      newTweetEdit: '编辑推文',
+      content: '内容',
+      post: '发布',
+      uploadImages: '上传图片',
+      uploadvideo: '上传单个视频',
+      none: '无',
+      images: '图片',
+      video: '视频',
       $vuetify: {
         input: {
           prependAction: '添加图片',

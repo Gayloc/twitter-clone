@@ -3,15 +3,15 @@
         <v-row>
             <v-col>
                 <v-card>
-                    <v-card-title>newTweetEdit</v-card-title>
+                    <v-card-title>{{ $t('newTweetEdit') }}</v-card-title>
                     <v-card-text>
                         <v-form>
-                            <v-textarea label="Content" v-model="content"></v-textarea>
+                            <v-textarea :label="$t('content')" v-model="content"></v-textarea>
                         </v-form>
                     </v-card-text>
                     <MediaEditor ref="mediaEditorRef"></MediaEditor>
                     <v-card-actions>
-                        <v-btn text @click="postTweet">tweet</v-btn>
+                        <v-btn text @click="postTweet">{{ $t('post') }}</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-col>
