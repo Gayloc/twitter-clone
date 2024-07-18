@@ -10,12 +10,12 @@
     <v-bottom-sheet v-model="sheet" inset>
         <v-card class="text-center card">
             <v-card-text>
-                <v-file-input label="File input" v-model="file" accept="image/*"
+                <v-file-input :label="$t('inputImage')" v-model="file" accept="image/*"
                     prepend-icon="mdi-camera"></v-file-input>
             </v-card-text>
             <v-card-actions>
-                <v-btn @click="submit" text>upload</v-btn>
-                <v-btn @click="sheet = !sheet" text>close</v-btn>
+                <v-btn @click="submit" text>{{ $t('upload') }}</v-btn>
+                <v-btn @click="sheet = !sheet" text>{{ $t('close') }}</v-btn>
             </v-card-actions>
         </v-card>
     </v-bottom-sheet>
@@ -26,8 +26,8 @@
       <v-card
         max-width="400"
         prepend-icon="mdi-update"
-        text="请先上传一张图片"
-        title="未选择文件"
+        :text="$t('inputImageFirst')"
+        :title="$t('noSelectedFile')"
       >
         <template v-slot:actions>
           <v-btn

@@ -17,7 +17,18 @@ export default defineI18nConfig(() => ({
       logout: 'Log out',
       changeAvatar: 'Change avatar',
       greeting: 'See what is here',
-      emailExists: 'Email exists'
+      emailExists: 'Email exists',
+      upload: 'Upload',
+      close: 'Close',
+      inputImage: 'Input image',
+      inputImageFirst: 'Input image first',
+      noSelectedFile: 'No selected file',
+      $vuetify: {
+        input: {
+          prependAction: 'Add image',
+          clear: 'Clear'
+        }
+      }
     },
     zh: {
       welcome: '你好',
@@ -35,7 +46,18 @@ export default defineI18nConfig(() => ({
       logout: '退出登录',
       changeAvatar: '更改头像',
       greeting: '看看有什么新鲜事',
-      emailExists: '邮箱已存在'
+      emailExists: '邮箱已存在',
+      upload: '上传',
+      close: '关闭',
+      inputImage: '上传一张图片',
+      inputImageFirst: '请先上传一张图片',
+      noSelectedFile: '未选择文件',
+      $vuetify: {
+        input: {
+          prependAction: '添加图片',
+          clear: '清除'
+        }
+      }
     }
   }
 }))
