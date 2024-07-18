@@ -67,7 +67,7 @@ const register = async () => {
 
     } catch (err) {
         if (err.statusCode == 400) {
-            error.value = t('checkEmailAndPassword')
+            error.value = t('emailExists')
         }
     }
 }

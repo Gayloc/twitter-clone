@@ -1,7 +1,7 @@
 <template>
     <v-container v-if="user != null">
         <v-card>
-            <Avatar></Avatar>
+            <Avatar :user="user"></Avatar>
             <v-card-title class="headline">
                 {{ user.username }}
             </v-card-title>

@@ -16,7 +16,8 @@ export default defineI18nConfig(() => ({
       registerInfoCantBeEmpty: 'Register info cant be empty',
       logout: 'Log out',
       changeAvatar: 'Change avatar',
-      greeting: 'See what is here'
+      greeting: 'See what is here',
+      emailExists: 'Email exists'
     },
     zh: {
       welcome: '你好',
@@ -33,7 +34,8 @@ export default defineI18nConfig(() => ({
       registerInfoCantBeEmpty: '注册信息不能为空',
       logout: '退出登录',
       changeAvatar: '更改头像',
-      greeting: '看看有什么新鲜事'
+      greeting: '看看有什么新鲜事',
+      emailExists: '邮箱已存在'
     }
   }
 }))
