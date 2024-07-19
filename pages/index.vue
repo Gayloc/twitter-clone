@@ -12,30 +12,39 @@
         <v-btn text :to="localePath('/edit')">{{ $t('newTweet') }}</v-btn>
       </v-card-actions>
     </v-card>
-    <v-row v-if="tweets">
+    <v-row v-if="tweets != null">
       <v-alert v-if="tweets.length == 0" type="info">{{ $t('noTweets') }}</v-alert>
       <v-col v-else v-for="tweet in tweets" :key="tweet.tweet_id" cols="12" md="6" lg="4">
         <TweetCard :tweet="tweet" />
       </v-col>
     </v-row>
     <v-alert v-else type="info">{{ $t('loading') }}</v-alert>
+    <v-pagination v-model="currentPage" :length="pageCount"></v-pagination>
   </v-container>
 </template>
 
 <script setup>
 import TweetCard from '~/components/TweetCard.vue';
 
-const { data: tweets } = await $fetch("/api/tweets", {
-  method: 'GET'
-})
-
+const tweets = ref(null)
 const src = ref('')
 const username = ref('')
 const localePath = useLocalePath()
+const currentPage = ref(1)
+const pageCount = ref(1)
+
+const updateTweets = async () => {
+  const data = await $fetch(`/api/tweets/order_by_time/${currentPage.value}`)
+  tweets.value = data.data
+  pageCount.value = data.maxPages
+}
+
+watch(currentPage, updateTweets)
 
 onMounted(async () => {
   const data = await $fetch('/api/auth/user');
   username.value = data.user.username;
+  updateTweets()
 });
 </script>
 

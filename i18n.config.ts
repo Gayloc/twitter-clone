@@ -51,6 +51,15 @@ export default defineI18nConfig(() => ({
           },
           prev: 'Previous',
           next: 'Next'
+        },
+        pagination: {
+          ariaLabel: {
+            next: 'Next',
+            currentPage: 'Current Page',
+            page: 'Page',
+            root: 'Root',
+            previous: 'Previous'
+          }
         }
       }
     },
@@ -104,6 +113,15 @@ export default defineI18nConfig(() => ({
           },
           prev: '上一个',
           next: '下一个'
+        },
+        pagination: {
+          ariaLabel: {
+            next: '下一页',
+            currentPage: '当前页',
+            page: '页',
+            root: '根',
+            previous: '上一页'
+          }
         }
       }
     }
