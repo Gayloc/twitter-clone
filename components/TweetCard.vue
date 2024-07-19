@@ -8,7 +8,7 @@
     <v-card-text :class="{'text-content': !hasMedia, 'content': hasMedia}">
       {{ tweet.content }}
     </v-card-text>
-    <v-carousel @click.stop v-if="images.length > 0" height="300px" cycle>
+    <v-carousel v-if="images.length > 0" height="300px" cycle :show-arrows="false" hide-delimiters>
       <v-carousel-item v-for="image in images" :key="image.media_id" :src="image.media_url" cover></v-carousel-item>
     </v-carousel>
     <video controls :src="video" v-if="video != null" height="300px" @click.stop muted autoplay loop></video>

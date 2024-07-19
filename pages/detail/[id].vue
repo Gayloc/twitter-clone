@@ -8,7 +8,7 @@
                 <v-card :prepend-avatar="avatar_url" :title="user.username" :subtitle="userTime" v-if="user != null">
                     <v-card-text>{{ tweet.content }}</v-card-text>
                     <v-card-text>
-                        <v-carousel @click.stop v-if="images.length > 0">
+                        <v-carousel @click.stop v-if="images.length > 0" show-arrows="hover" progress hide-delimiters>
                             <v-carousel-item v-for="image in images" :key="image.media_id"
                                 :src="image.media_url"></v-carousel-item>
                         </v-carousel>
