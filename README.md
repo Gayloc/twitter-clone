@@ -6,7 +6,7 @@
 ```shell
 npm install
 npm run build
-node ./.optput/server/index.mjs
+node ./.output/server/index.mjs
 ```
 默认开放端口为`3000`
 ## 技术栈
