@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default {
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   compatibilityDate: '2024-07-08',
   modules: [
     'vuetify-nuxt-module',

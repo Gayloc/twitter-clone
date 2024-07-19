@@ -5,12 +5,10 @@
 ## 部署
 ```shell
 npm install
-npm run build
-cp -r .data .output
-cd .output
-node ./server/index.mjs
+npm run dev
 ```
-默认开放端口为`3000`
+暂时用开发模式，后期会换图床服务器
+
 ## 技术栈
 - [nuxt3](https://nuxt.com/)
 - [nitro](https://nitro.unjs.io/)
