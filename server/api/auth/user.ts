@@ -18,7 +18,7 @@ export default defineEventHandler(async (event) => {
     if (rows.length === 0) {
         return {
             success: false,
-            message: 'Tweet not found'
+            message: 'User not found'
         };
     }
 

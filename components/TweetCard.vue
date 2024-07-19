@@ -94,6 +94,7 @@ const hasMedia = computed(() => images.value.length > 0 || video.value != null);
   /* 隐藏溢出内容 */
   text-overflow: ellipsis;
   /* 添加省略号 */
+  height: 50px;
 }
 
 .text-content {

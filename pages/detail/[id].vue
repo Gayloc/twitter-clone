@@ -14,6 +14,7 @@
                         </v-carousel>
                         <video controls :src="video" v-if="video != null" width="100%" @click.stop></video>
                     </v-card-text>
+                    <CommentEditor :tweetId="$route.params.id" />
                 </v-card>
                 <v-alert v-else type="info">{{ $t('loading') }}</v-alert>
             </v-col>
@@ -23,6 +24,7 @@
 
 <script setup>
 import moment from 'moment-timezone';
+import CommentEditor from '~/components/CommentEditor.vue';
 
 const route = useRoute()
 const user = ref(null)
