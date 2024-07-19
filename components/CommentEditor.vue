@@ -5,17 +5,19 @@
         </v-alert>
         <v-card-text>
             <v-form>
-                <v-textarea :label="'postComments'" v-model="comment" auto-grow></v-textarea>
+                <v-textarea :label="$t('inputComments')" v-model="comment" auto-grow></v-textarea>
             </v-form>
         </v-card-text>
         <v-card-actions>
-            <v-btn text @click="postComment">postComment</v-btn>
+            <v-btn text @click="postComment">{{ $t('postComment') }}</v-btn>
         </v-card-actions>
-        <v-card-title>CommentAreatitle</v-card-title>
+        <v-card-title>{{ $t('commentAreaTitle') }}</v-card-title>
         <CommentArea :tweetId="props['tweetId']" ref="areaRef" />
     </v-card>
     <v-card v-else>
-        <v-card-title>loginFirst</v-card-title>
+        <v-card-title>{{ $t('loginFirst') }}</v-card-title>
+        <v-card-title>{{ $t('commentAreaTitle') }}</v-card-title>
+        <CommentArea :tweetId="props['tweetId']" ref="areaRef" />
     </v-card>
 </template>
 

@@ -35,6 +35,11 @@ export default defineI18nConfig(() => ({
       video: 'Video',
       joinTime: 'Join time',
       noTweets: 'No Tweets. Post One!',
+      postComment: 'Post Comment',
+      noComments: 'No Comments. Post one!',
+      commentAreaTitle: 'Comments',
+      loginFirst: 'Login first',
+      inputComments: 'Input your comment',
       $vuetify: {
         input: {
           prependAction: 'Add image',
@@ -83,6 +88,11 @@ export default defineI18nConfig(() => ({
       video: '视频',
       joinTime: '注册时间',
       noTweets: '还没有推文，快发布一个吧！',
+      postComment: '发送评论',
+      noComments: '没有评论，发一条吧！',
+      commentAreaTitle: '评论',
+      loginFirst: '请先登录',
+      inputComments: '输入你的点评',
       $vuetify: {
         input: {
           prependAction: '添加图片',
