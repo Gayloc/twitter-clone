@@ -4,9 +4,10 @@ export default defineEventHandler(async (event) => {
     const db = useDatabase()
     const body = await readBody(event)
     await authMiddleware(event);
+    const userInfo = event.context.auth
 
     // 验证输入参数
-    if (!body['user_id'] || !body['content']) {
+    if (!body['content']) {
         return {
             success: false,
             message: 'Invalid input parameters'
@@ -14,7 +15,7 @@ export default defineEventHandler(async (event) => {
     }
 
     const newTweet = {
-        user_id: body['user_id'],
+        user_id: userInfo.userId,
         content: body['content']
     }
 

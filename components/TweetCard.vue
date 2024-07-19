@@ -50,10 +50,25 @@ const goToDetail = () => {
   router.push(localePath(`/detail/${tweet.value.tweet_id}`));
 };
 
-const likeTweet = () => {
-  isLike.value = !isLike.value
-  // 发送点赞请求
+const likeTweet = async () => {
+  try {
+      await $fetch(`/api/tweets/like/${tweet.value.tweet_id}`)
+      updateLike()
+    } catch(err) {
+      if (err.statusCode == 401) {
+        navigateTo(localePath('/login'))
+      }
+    }
 };
+
+const updateLike = async () => {
+    try {
+      const data = await $fetch(`/api/tweets/like/check/${tweet.value.tweet_id}`)
+      isLike.value = data.like
+    } catch(err) {
+      console.log(err)
+    }
+}
 
 onMounted(async () => {
   try {
@@ -72,9 +87,9 @@ onMounted(async () => {
         }
       }
     }
-  } catch (err) {
-    error.value = err
+  } catch {
   }
+  updateLike()
 })
 
 const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;

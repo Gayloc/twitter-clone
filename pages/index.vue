@@ -42,8 +42,11 @@ const updateTweets = async () => {
 watch(currentPage, updateTweets)
 
 onMounted(async () => {
-  const data = await $fetch('/api/auth/user');
-  username.value = data.user.username;
+  try {
+    const data = await $fetch('/api/auth/user');
+    username.value = data.user.username;
+  } catch {
+  }
   updateTweets()
 });
 </script>

@@ -39,7 +39,6 @@ const postTweet = async () => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                user_id: user.value.user_id,
                 content: content.value
             })
         })
