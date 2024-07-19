@@ -11,7 +11,7 @@
                     </v-card-text>
                     <MediaEditor ref="mediaEditorRef"></MediaEditor>
                     <v-card-actions>
-                        <v-btn text @click="postTweet">{{ $t('post') }}</v-btn>
+                        <v-btn text @click="postTweet" :disabled="content == ''">{{ $t('post') }}</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-col>
