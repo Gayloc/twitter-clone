@@ -30,7 +30,7 @@ const tweets = ref(null)
 const src = ref('')
 const username = ref('')
 const localePath = useLocalePath()
-const currentPage = ref(1)
+const currentPage = useState('currentPage', () => 1)
 const pageCount = ref(1)
 
 const updateTweets = async () => {

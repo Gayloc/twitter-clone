@@ -4,7 +4,10 @@
     </v-alert>
     <v-card-text v-if="comments.length == 0">{{ $t('noComments') }}</v-card-text>
     <div v-else v-if="ready">
-        <v-card v-for="(comment, index) in comments" :key="comment.comment_id" :prepend-avatar="avatars[index]" :title="users[index]?.username" :subtitle="moment.utc(comment.created_at).tz(userTimeZone).format('YYYY-MM-DD HH:mm:ss')">
+        <v-card v-for="(comment, index) in comments" :key="comment.comment_id" :prepend-avatar="avatars[index]"
+            :title="users[index]?.username"
+            :subtitle="moment.utc(comment.created_at).tz(userTimeZone).format('YYYY-MM-DD HH:mm:ss')"
+            :variant="'flat'">
             <v-card-text>
                 {{ comment.content }}
             </v-card-text>
