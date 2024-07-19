@@ -2,6 +2,13 @@
 ![icon](./public/icon.png)<br/>
 推特山寨版
 
+## 部署
+```shell
+npm install
+npm run build
+node ./.optput/server/index.mjs
+```
+默认开放端口为`3000`
 ## 技术栈
 - [nuxt3](https://nuxt.com/)
 - [nitro](https://nitro.unjs.io/)
