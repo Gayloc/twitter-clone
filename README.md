@@ -5,6 +5,8 @@
 
 ## 部署
 
+先设置好图片服务器
+
 ```shell
 npm install
 npm run build
@@ -27,7 +29,7 @@ python -m http.server 3001
 
 ```typescript
 runtimeConfig: {
-    image_server: "http://localhost:3001"
+    image_server: "http://<your-host>:3001"
 },
 ```
 
