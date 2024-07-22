@@ -5,10 +5,13 @@
 
 ## 部署
 
-先设置好图片服务器
-
 ```shell
 npm install
+```
+
+先设置好图片服务器再构建
+
+```shell
 npm run build
 cp -r .data .output
 cd .output
