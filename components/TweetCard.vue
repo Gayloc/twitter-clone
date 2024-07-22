@@ -11,7 +11,7 @@
     <v-carousel v-if="images.length > 0" height="300px" cycle :show-arrows="false" hide-delimiters>
       <v-carousel-item v-for="image in images" :key="image.media_id" :src="image.media_url" cover></v-carousel-item>
     </v-carousel>
-    <video controls :src="video" v-if="video != null" height="300px" @click.stop muted autoplay loop></video>
+    <video :src="video" v-if="video != null" height="300px" muted autoplay loop></video>
     <v-card-actions class="d-flex justify-end">
       <v-btn icon @click.stop="likeTweet">
         <v-icon v-if="isLike">
