@@ -19,6 +19,10 @@ export default {
   //   { path: '/api', handler: '~/api/tweets.ts' }
   // ],
 
+  runtimeConfig: {
+    image_server: "http://localhost:3001"
+  },
+
   auth: {
     provider: {
       type: 'local',

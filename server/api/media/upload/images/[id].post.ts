@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
     })
   }
 
-  const uploadDir = join(process.cwd(), 'public', 'media', tweetId)
+  const uploadDir = join(process.cwd(), 'dynamic', 'media', tweetId)
   mkdirSync(uploadDir, { recursive: true })
 
   return new Promise((resolve, reject) => {
@@ -43,7 +43,9 @@ export default defineEventHandler(async (event) => {
 
         const filePath = join(uploadDir, f.originalFilename)
         renameSync(f.filepath, filePath)
-        await db.sql`INSERT INTO Media (tweet_id, media_url, media_type) VALUES (${tweetId}, ${'/media/'+ tweetId + '/' + f.originalFilename}, ${'image'})`
+
+        const runtimeConfig = useRuntimeConfig()
+        await db.sql`INSERT INTO Media (tweet_id, media_url, media_type) VALUES (${tweetId}, ${`${runtimeConfig.image_server}/media/${tweetId}/${f.originalFilename}`}, ${'image'})`
         data.push(`/media/${tweetId}/${f.originalFilename}`)
       }
 

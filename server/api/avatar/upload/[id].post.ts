@@ -6,7 +6,14 @@ export default defineEventHandler(async (event) => {
   const form = new IncomingForm({ multiples: false })
   const userId = getRouterParam(event, 'id')
 
-  const uploadDir = join(process.cwd(), 'public', 'avatars')
+  if (userId == undefined) {
+    throw createError({
+      statusCode: 401,
+      message: 'Need user id'
+    })
+  }
+
+  const uploadDir = join(process.cwd(), 'dynamic', 'avatars', userId)
   mkdirSync(uploadDir, { recursive: true })
 
   return new Promise((resolve, reject) => {
@@ -35,12 +42,14 @@ export default defineEventHandler(async (event) => {
       const newFilename = `${userId}${file.originalFilename.slice(file.originalFilename.lastIndexOf('.'))}`
       const filePath = join(uploadDir, newFilename)
       renameSync(file.filepath, filePath)
-      await db.sql`UPDATE Avatar SET avatar_url = ${"/avatars/"+newFilename} WHERE user_id = ${userId}`
+
+      const runtimeConfig = useRuntimeConfig()
+      await db.sql`UPDATE Avatar SET avatar_url = ${`${runtimeConfig.image_server}/avatars/${userId}/${newFilename}`} WHERE user_id = ${userId}`
 
       resolve({ 
         statusCode: 200,
         body: JSON.stringify({
-          userId, filePath: `/avatars/${newFilename}`
+          userId, filePath: `${process.env.image_server}/avatars/${userId}/${newFilename}`
         })
        })
     })
