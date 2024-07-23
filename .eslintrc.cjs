@@ -22,7 +22,18 @@ module.exports = {
     'no-extra-parens': 2, // 禁止非必要的括号
     'no-extra-semi': 2, // 禁止多余的冒号
     'comma-dangle': [2, 'never'], // 键值对最后一个不能有,
-    'spaced-comment': ['error', 'always'] // 注释必须空格
+    'spaced-comment': ['error', 'always'], // 注释必须空格
+    'prettier/prettier': [
+      'warn',
+      {
+        singleQuote: true, // 使用单引号
+        semi: false, // 结尾不加分号
+        tabWidth: 2, // 缩进2个空格
+        printWidth: 90, // 单行最大长度90
+        tailingComma: 'none', // 尾随逗号
+        endOfLine: 'auto' // 自动根据操作系统换行
+      }
+    ]
   }
 }
  
