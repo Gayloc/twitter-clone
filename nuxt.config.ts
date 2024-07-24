@@ -7,7 +7,7 @@ export default {
     'vuetify-nuxt-module',
     '@nuxt/eslint',
     '@nuxtjs/color-mode',
-    "@nuxtjs/i18n"
+    '@nuxtjs/i18n'
   ],
   // esline: {
   //   config: {
@@ -27,7 +27,7 @@ export default {
 
   colorMode: {
     preference: 'system', // default value of $colorMode.preference
-    fallback: 'light', // fallback value if not system preference found
+    fallback: 'light' // fallback value if not system preference found
   },
 
   vuetify: {
@@ -65,4 +65,4 @@ export default {
       }
     }
   }
-}
+};
