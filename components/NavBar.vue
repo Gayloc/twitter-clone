@@ -13,21 +13,21 @@
 <script setup>
 const router = useRouter();
 const colorMode = useColorMode();
-const { locale, setLocale } = useI18n()
+const { locale, setLocale } = useI18n();
 const localePath = useLocalePath();
 
 const toggleTheme = () => {
-    console.log(colorMode.value)
+    console.log(colorMode.value);
     if (colorMode.value === 'light') {
-        colorMode.preference = 'dark'
+        colorMode.preference = 'dark';
     } else if (colorMode.value === 'dark') {
-        colorMode.preference = 'light'
+        colorMode.preference = 'light';
     }
-}
+};
 
 const goBack = () => {
     router.go(-1);
-}
+};
 </script>
 
 <style scoped></style>

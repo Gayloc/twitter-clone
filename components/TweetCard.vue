@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-const isLike = ref(false)
+const isLike = ref(false);
 const localePath = useLocalePath();
 
 const props = defineProps({
@@ -34,7 +34,7 @@ const goToDetail = () => {
 };
 
 const likeTweet = () => {
-  isLike.value = !isLike.value
+  isLike.value = !isLike.value;
   // 发送点赞请求
 };
 
