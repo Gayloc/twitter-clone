@@ -17,6 +17,10 @@ export const useUserStore = defineStore(
       };
       const getUser = () => {
           return user.value;
+    };
+    const logout = () => {
+        setToken('');
+        setUser('');
       };
     return {
       Token,
@@ -24,7 +28,8 @@ export const useUserStore = defineStore(
       getToken,
       user,
       setUser,
-      getUser
+      getUser,
+      logout
     };
   },
   {
