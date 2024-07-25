@@ -8,7 +8,8 @@ export default defineI18nConfig(() => ({
       login: 'Login',
       register: 'Register',
       email: 'Email',
-      password: 'Password'
+      password: 'Password',
+      loginFirstError: 'Please login first'
     },
     zh: {
       welcome: '你好',
@@ -17,7 +18,8 @@ export default defineI18nConfig(() => ({
       login: '登录',
       register: '注册',
       email: '邮箱',
-      password: '密码'
+      password: '密码',
+      loginFirstError: '请先登录'
     }
   }
 }));

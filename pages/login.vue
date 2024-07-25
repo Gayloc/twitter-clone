@@ -30,13 +30,20 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useUserStore } from '~/stores/user';
 const localePath = useLocalePath();
+const userStore = useUserStore();
 
 const email = ref('');
 const password = ref('');
 
-const login = () => {
-  // 登录逻辑
+const login = async () => {
+  const res = await useFetch('/api/login');
+  console.log(res.data._rawValue.data[0].user);
+  userStore.setUser(res.data._rawValue.data[0].user);
+  userStore.setToken(res.data._rawValue.data[1].Token);
+  ElMessage.success('Login successful!');
+  navigateTo('/');
 };
 </script>
 
