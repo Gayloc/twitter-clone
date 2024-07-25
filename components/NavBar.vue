@@ -17,7 +17,6 @@ const { locale, setLocale } = useI18n();
 const localePath = useLocalePath();
 
 const toggleTheme = () => {
-    console.log(colorMode.value);
     if (colorMode.value === 'light') {
         colorMode.preference = 'dark';
     } else if (colorMode.value === 'dark') {

@@ -13,6 +13,6 @@
 </template>
 
 <script setup>
-const route = useRoute()
-const { data: tweet } = await $fetch("/api/tweets/" + route.params.id)
+const route = useRoute();
+const { data: tweet } = await $fetch('/api/tweets/' + route.params.id);
 </script>

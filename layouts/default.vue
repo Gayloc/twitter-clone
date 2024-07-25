@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import NavBar from '~/components/NavBar.vue'
-const colorMode = useColorMode()
-colorMode.preference = 'system'
+import NavBar from '~/components/NavBar.vue';
+const colorMode = useColorMode();
+colorMode.preference = 'system';
 </script>
