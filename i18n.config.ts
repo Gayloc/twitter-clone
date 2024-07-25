@@ -20,4 +20,4 @@ export default defineI18nConfig(() => ({
       password: '密码'
     }
   }
-}))
+}));

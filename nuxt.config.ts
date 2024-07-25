@@ -1,7 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-
+import { transformAssetUrls } from 'vite-plugin-vuetify';
 export default {
   devtools: { enabled: true },
+  build: {
+    transpile: ['vuetify']
+  },
   compatibilityDate: '2024-07-08',
   modules: [
     'vuetify-nuxt-module',
@@ -12,14 +15,14 @@ export default {
     '@pinia-plugin-persistedstate/nuxt',
     '@element-plus/nuxt'
   ],
-  // esline: {
-  //   config: {
-  //     stylke: true,
-  //   }
-  // },
-  // serverMiddleware: [
-  //   { path: '/api', handler: '~/api/tweets.ts' }
-  // ],
+
+  vite: {
+    vue: {
+      template: {
+        transformAssetUrls
+      }
+    }
+  },
 
   i18n: {
     vueI18n: './i18n.config.ts', // if you are using custom path, default

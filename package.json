@@ -12,6 +12,7 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@mdi/font": "^7.4.47",
     "@nuxt/types": "^2.18.1",
     "@nuxtjs/i18n": "^8.3.1",
     "@pinia/nuxt": "^0.5.1",
@@ -34,7 +35,9 @@
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "prettier": "^3.3.2"
+    "prettier": "^3.3.2",
+    "vite-plugin-vuetify": "^2.0.3",
+    "vuetify": "^3.6.13"
   },
   "overrides": {
     "vue": "latest"

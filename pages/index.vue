@@ -9,11 +9,10 @@
   </v-container>
 </template>
 
-
 <script setup>
 import TweetCard from '~/components/TweetCard.vue';
 
-const { data: tweets } = await $fetch("/api/tweets", {
+const { data: tweets } = await $fetch('/api/tweets', {
   method: 'GET'
-})
+});
 </script>
