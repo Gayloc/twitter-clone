@@ -1,9 +1,11 @@
 <template>
   <v-container>
     <v-row class="d-flex justify-center">
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="4" class="ma-5">
         <v-card>
-          <v-card-title class="headline">{{ $t('login') }}</v-card-title>
+          <v-card-title class="headline ma-5 d-flex justify-center">
+            {{ $t('login') }}
+          </v-card-title>
           <v-card-text>
             <v-form>
               <v-text-field v-model="email" :label="$t('email')" required />
@@ -39,7 +41,6 @@ const password = ref('');
 
 const login = async () => {
   const res = await useFetch('/api/login/login');
-  console.log(res.data._rawValue.data[0].user);
   userStore.setUser(res.data._rawValue.data[0].user);
   userStore.setToken(res.data._rawValue.data[1].Token);
   ElMessage.success('Login successful!');

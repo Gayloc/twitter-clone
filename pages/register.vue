@@ -1,9 +1,11 @@
 <template>
     <v-container>
         <v-row class="d-flex justify-center">
-            <v-col cols="12" md="4">
+            <v-col cols="12" md="4" class="ma-5">
                 <v-card>
-                    <v-card-title class="headline">{{ $t('register') }}</v-card-title>
+                    <v-card-title class="headline ma-5 d-flex justify-center">
+                        {{ $t('register') }}
+                    </v-card-title>
                     <v-card-text>
                         <v-form>
                             <v-text-field v-model="email" :label="$t('email')" required />
