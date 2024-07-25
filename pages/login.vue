@@ -7,12 +7,20 @@
           <v-card-text>
             <v-form>
               <v-text-field v-model="email" :label="$t('email')" required />
-              <v-text-field v-model="password" :label="$t('password')" type="password" required />
+              <v-text-field 
+              v-model="password" 
+              :label="$t('password')" 
+              type="password" 
+              required
+              />
             </v-form>
           </v-card-text>
           <v-card-actions class="d-flex justify-end">
             <v-btn color="primary" @click="login">{{ $t('login') }}</v-btn>
-            <v-btn color="secondary" :to="localePath('/register')">{{ $t('register') }}</v-btn>
+            <v-btn 
+            color="secondary" 
+            :to="localePath('/register')">{{ $t('register') }}
+          </v-btn>
           </v-card-actions>
         </v-card>
       </v-col>

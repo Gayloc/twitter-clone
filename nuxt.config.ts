@@ -7,7 +7,10 @@ export default {
     'vuetify-nuxt-module',
     '@nuxt/eslint',
     '@nuxtjs/color-mode',
-    '@nuxtjs/i18n'
+    '@nuxtjs/i18n',
+    '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
+    '@element-plus/nuxt'
   ],
   // esline: {
   //   config: {

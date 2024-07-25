@@ -7,7 +7,12 @@
                     <v-card-text>
                         <v-form>
                             <v-text-field v-model="email" :label="$t('email')" required />
-                            <v-text-field v-model="password" :label="$t('password')" type="password" required />
+                            <v-text-field
+                            v-model="password" 
+                            :label="$t('password')" 
+                            type="password" 
+                            required 
+                            />
                         </v-form>
                     </v-card-text>
                     <v-card-actions class="d-flex justify-end">
