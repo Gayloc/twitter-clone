@@ -12,10 +12,11 @@
       </v-btn>
       <v-btn icon="mdi-comment-outline" @click.stop="commentOnTweet"/>
     </v-card-actions>
-    <v-card 
+    <v-card
       v-if="isComment" 
       variant="tonal" 
-      class="d-flex flex-column pa-4 comment" 
+      class="d-flex flex-column pa-4 comment"
+      @click.stop="event.stopPropagation()"
       >
       <comment-card  :title="tweet.content"/>
     </v-card>
