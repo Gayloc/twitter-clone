@@ -43,14 +43,14 @@ const userStore = useUserStore();
 
 const items = ref([
   { title: 'Home', route: '/main' , icon: 'mdi-home-account'},
-  { title: 'My Like', route: '/Login', icon: 'mdi-thumb-up-outline' },
-  { title: 'My article', route: '/Login', icon: 'mdi-creation-outline' },
-  { title: 'My Account', route: '/Login', icon: 'mdi-account-cog' },
-  { title: 'About', route: '/Login', icon: 'mdi-information' }
+  { title: 'My Like', route: '/mylike', icon: 'mdi-thumb-up-outline' },
+  { title: 'My article', route: '/myarticle', icon: 'mdi-creation-outline' },
+  { title: 'My Account', route: '/myaccount', icon: 'mdi-account-cog' },
+  { title: 'About', route: '/about', icon: 'mdi-information' }
 ]);
 
 const logout = () => {
   userStore.logout();
-  navigateTo('/Login');
+  navigateTo('/login');
 };
 </script>
