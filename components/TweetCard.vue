@@ -12,12 +12,16 @@
       </v-btn>
       <v-btn icon="mdi-comment-outline" @click.stop="commentOnTweet"/>
     </v-card-actions>
+    <v-card>
+      <comment-card v-if="isComment" :title="tweet.content"/>
+    </v-card>
   </v-card>
 </template>
 
 <script setup>
 const isLike = ref(false);
 const localePath = useLocalePath();
+const isComment = ref(false);
 
 const props = defineProps({
   tweet: {
@@ -35,12 +39,21 @@ const goToDetail = () => {
 
 const likeTweet = () => {
   isLike.value = !isLike.value;
-  // 发送点赞请求
+  // TODO: 发送点赞请求
+  // ...
+  if (isLike.value) {
+    ElMessage.success('点赞成功');
+  } else {
+    ElMessage.success('取消点赞成功');
+  }
 };
 
 const commentOnTweet = () => {
-  // 跳转到评论页面
+  isComment.value = !isComment.value;
+  // TODO: 跳转到评论页面
+  // ...
 };
+
 </script>
 
 <style scoped>
