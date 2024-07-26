@@ -66,7 +66,7 @@ const commentOnTweet = () => {
     return;
   }
   isComment.value = !isComment.value;
-  // TODO: 跳转到评论页面
+  // TODO: 获取评论
   // ...
 };
 

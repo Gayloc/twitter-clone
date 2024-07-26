@@ -62,8 +62,9 @@
     </v-sheet>
   </template>
   <script setup>
-import { useUserStore } from '~/stores/user';
-const userStore = useUserStore();
+  import { useUserStore } from '~/stores/user';
+  const userStore = useUserStore();
+const myUser = userStore.getUser();
 const form = ref(null);
 const name = ref(userStore.user.name);
 const email = ref(userStore.user.email);
@@ -83,8 +84,11 @@ const validate = async () => {
     if (valid) {
         ElMessage.success('Form is valid!');
         // TODO 后端验证
-        // ...
-        userStore.updateUser({ name: name.value, email: email.value, age: select.value });
+      // ...
+      myUser.name = name.value;
+      myUser.email = email.value;
+      myUser.age = select.value;
+        userStore.setUser(myUser);
     } else {
         ElMessage.error('Form is invalid!');
     }
