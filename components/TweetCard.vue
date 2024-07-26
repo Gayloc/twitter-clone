@@ -15,8 +15,8 @@
     <v-card 
       v-if="isComment" 
       variant="tonal" 
-      class="d-flex flex-column pa-4" 
-      style="width: 80%; margin-left: 5%;">
+      class="d-flex flex-column pa-4 comment" 
+      >
       <comment-card  :title="tweet.content"/>
     </v-card>
   </v-card>
@@ -60,8 +60,13 @@ const commentOnTweet = () => {
 
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .mb-3 {
   margin-bottom: 16px;
+}
+
+.comment {
+  width: 80%;
+  margin-left: 5%;
 }
 </style>
