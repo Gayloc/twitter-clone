@@ -11,8 +11,8 @@
           <v-list-item
             v-else
             prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg"
-            subtitle="sandra_a88@gmailcom"
-            title="Me"
+            :subtitle="userStore.user.email"
+            :title="userStore.user.name"
           />
           <v-divider/>
           <v-list-item
