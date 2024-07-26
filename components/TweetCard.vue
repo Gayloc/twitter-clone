@@ -13,7 +13,7 @@
       <v-btn icon="mdi-comment-outline" @click.stop="commentOnTweet"/>
     </v-card-actions>
     <v-card
-      v-if="isComment" 
+      v-if="isComment"
       variant="tonal" 
       class="d-flex flex-column pa-4 comment"
       @click.stop="event.stopPropagation()"
@@ -24,9 +24,12 @@
 </template>
 
 <script setup>
+import { useUserStore } from '~/stores/user';
+
 const isLike = ref(false);
 const localePath = useLocalePath();
 const isComment = ref(false);
+const userStore = useUserStore();
 
 const props = defineProps({
   tweet: {
@@ -43,6 +46,10 @@ const goToDetail = () => {
 };
 
 const likeTweet = () => {
+  if (!userStore.Token) {
+    ElMessage.error('请先登录');
+    return;
+  }
   isLike.value = !isLike.value;
   // TODO: 发送点赞请求
   // ...
@@ -54,6 +61,10 @@ const likeTweet = () => {
 };
 
 const commentOnTweet = () => {
+  if (!userStore.Token) {
+    ElMessage.error('请先登录');
+    return;
+  }
   isComment.value = !isComment.value;
   // TODO: 跳转到评论页面
   // ...
