@@ -6,7 +6,7 @@
         cols="16" 
         md="12" 
         lg="6"
-        style="min-width: 100%"
+        style="max-width: 33%;"
         >
           <TweetCard :tweet="tweet" />
         </v-col>

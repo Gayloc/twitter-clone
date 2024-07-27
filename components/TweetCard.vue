@@ -1,6 +1,9 @@
 <template>
   <v-card class="mb-3" @click="goToDetail">
-    <v-card-text>{{ tweet.content }}</v-card-text>
+    <v-card-title>{{ tweet.content }}</v-card-title>
+    <v-card-text>
+      {{ tweet.content }}
+    </v-card-text>
     <v-card-actions>
       <v-btn icon @click.stop="likeTweet">
         <v-icon v-if="isLike">
@@ -11,6 +14,12 @@
         </v-icon>
       </v-btn>
       <v-btn icon="mdi-comment-outline" @click.stop="commentOnTweet"/>
+      <v-spacer/>
+        <v-rating
+          v-model="rating"
+          size="x-small"
+          hover
+        />
     </v-card-actions>
     <v-card
       v-if="isComment"
