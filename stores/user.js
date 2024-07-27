@@ -11,7 +11,15 @@ export const useUserStore = defineStore(
       const getToken = () => {
           return Token.value;
       };
-      const user = ref([]);
+    const user = ref(
+      {
+        id: null,
+        name: '',
+        age: null,
+        email: '',
+        userLikes: []
+    }
+    );
       const setUser = (event) => {
           user.value = event;
       };

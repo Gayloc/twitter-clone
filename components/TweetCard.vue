@@ -25,12 +25,13 @@
 
 <script setup>
 import { useUserStore } from '~/stores/user';
+const userStore = useUserStore();
 
-const isLike = computed(() => userStore.user.userLikes.includes(tweet.value.id));
-// const isLike = ref(false);
+const isLike
+  = !userStore.Token ?
+    false : computed(() => userStore.user.userLikes.includes(tweet.value.id));
 const localePath = useLocalePath();
 const isComment = ref(false);
-const userStore = useUserStore();
 
 const props = defineProps({
   tweet: {
