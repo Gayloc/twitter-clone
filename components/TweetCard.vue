@@ -26,7 +26,8 @@
 <script setup>
 import { useUserStore } from '~/stores/user';
 
-const isLike = ref(false);
+const isLike = computed(() => userStore.user.userLikes.includes(tweet.value.id));
+// const isLike = ref(false);
 const localePath = useLocalePath();
 const isComment = ref(false);
 const userStore = useUserStore();
@@ -50,10 +51,9 @@ const likeTweet = () => {
     ElMessage.error('请先登录');
     return;
   }
-  isLike.value = !isLike.value;
   // TODO: 发送点赞请求
   // ...
-  if (isLike.value) {
+  if (!isLike.value) {
     userStore.user.userLikes.push(tweet.value.id);
     ElMessage.success('点赞成功');
   } else {

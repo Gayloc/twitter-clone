@@ -2,11 +2,11 @@
     <v-row v-if="user" class="d-flex flex-wrap">
         <v-col 
         v-for="tweet in user.data" 
-        :key="tweet.id" 
+        :key="tweet.id"
         cols="16" 
         md="12" 
         lg="6"
-        style="min-width: 100%" 
+        style="min-width: 100%"
         >
           <TweetCard :tweet="tweet" />
         </v-col>
