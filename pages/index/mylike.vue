@@ -3,12 +3,10 @@
         <v-col 
         v-for="tweet in user.data.filter(tweet => likes.includes(tweet.id))"
         :key="tweet.id" 
-        cols="16"
-        md="12"
-        lg="6" 
-        style="min-width: 100%"
+        cols="12"
+        md="4"
         >
-          <TweetCard 
+        <TweetCard 
             :tweet="tweet"/>
         </v-col>
         <v-col 

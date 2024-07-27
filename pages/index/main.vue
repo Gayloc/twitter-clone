@@ -3,10 +3,8 @@
         <v-col 
         v-for="tweet in user.data" 
         :key="tweet.id"
-        cols="16" 
-        md="12" 
-        lg="6"
-        style="max-width: 33%;"
+        cols="12"
+        md="4"
         >
           <TweetCard :tweet="tweet" />
         </v-col>
