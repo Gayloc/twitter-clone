@@ -54,8 +54,11 @@ const likeTweet = () => {
   // TODO: 发送点赞请求
   // ...
   if (isLike.value) {
+    userStore.user.userLikes.push(tweet.value.id);
     ElMessage.success('点赞成功');
   } else {
+    userStore.user.userLikes =
+      userStore.user.userLikes.filter(id => id !== tweet.value.id);
     ElMessage.success('取消点赞成功');
   }
 };

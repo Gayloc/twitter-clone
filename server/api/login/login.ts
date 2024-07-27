@@ -7,7 +7,8 @@ export default defineEventHandler(() => {
                     id: 1,
                     name: 'John',
                     age: 30,
-                    email: 'john@example.com'
+                    email: 'john@example.com',
+                    userLikes: []
                 }
             },
             {
