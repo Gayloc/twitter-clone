@@ -19,6 +19,7 @@
           v-model="rating"
           size="x-small"
           hover
+          @click.stop="event.stopPropagation()"
         />
     </v-card-actions>
     <v-card
@@ -35,6 +36,7 @@
 <script setup>
 import { useUserStore } from '~/stores/user';
 const userStore = useUserStore();
+const rating = ref(0);
 
 // 检查是否登录，防止includes报错空对象
 const isLike
