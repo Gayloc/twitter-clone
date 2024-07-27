@@ -1,6 +1,23 @@
 <template>
     <v-row class="d-flex justify-center">
         <v-col cols="12">
+            <v-col 
+        v-if="true" 
+        cols="16" 
+        md="12" 
+        lg="6" 
+        style="min-width: 100%">
+        <v-empty-state
+            headline="No Messages Yet"
+            text="You haven't received any messages yet.
+            When you do, they'll appear here."
+            title="Check back later."
+            @click:action="onClickAction"
+        />
+        </v-col>
+        </v-col>
+        <v-divider/>
+        <v-col cols="12">
             <div style="min-height: 30%;">
                 <QuillEditor 
                     v-model:content="content"

@@ -19,7 +19,8 @@
         style="min-width: 100%">
         <v-empty-state
             headline="No Messages Yet"
-            text="You haven't received any messages yet. When you do, they'll appear here."
+            text="You haven't received any messages yet.
+            When you do, they'll appear here."
             title="Check back later."
             @click:action="onClickAction"
         />
