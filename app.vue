@@ -18,7 +18,7 @@ useSeoMeta({
   twitterDescription: 'Web应用开发大作业🥵🥵🥵',
   twitterImage: '/icon.png',
   twitterCard: '呕心沥血之作🥵'
-})
+});
 
 useHead({
   htmlAttrs: {
@@ -31,5 +31,5 @@ useHead({
       href: '/icon.png'
     }
   ]
-})
+});
 </script>

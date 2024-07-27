@@ -5,6 +5,5 @@ export default defineEventHandler((event) => {
             title: 'title',
             content: 'xxx'
           }
-    }
-  })
-  
+    };
+  });

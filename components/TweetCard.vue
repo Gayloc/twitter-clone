@@ -12,12 +12,27 @@
       </v-btn>
       <v-btn icon="mdi-comment-outline" @click.stop="commentOnTweet"/>
     </v-card-actions>
+    <v-card
+      v-if="isComment"
+      variant="tonal" 
+      class="d-flex flex-column pa-4 comment"
+      @click.stop="event.stopPropagation()"
+      >
+      <comment-card  :title="tweet.content"/>
+    </v-card>
   </v-card>
 </template>
 
 <script setup>
-const isLike = ref(false)
+import { useUserStore } from '~/stores/user';
+const userStore = useUserStore();
+
+// 检查是否登录，防止includes报错空对象
+const isLike
+  = !userStore.Token ?
+    false : computed(() => userStore.user.userLikes.includes(tweet.value.id));
 const localePath = useLocalePath();
+const isComment = ref(false);
 
 const props = defineProps({
   tweet: {
@@ -34,17 +49,44 @@ const goToDetail = () => {
 };
 
 const likeTweet = () => {
-  isLike.value = !isLike.value
-  // 发送点赞请求
+  if (!userStore.Token) {
+    ElMessage.error('请先登录');
+    return;
+  }
+  // TODO: 发送点赞请求
+  // ...
+  if (!isLike.value) {
+    userStore.user.userLikes.push(tweet.value.id);
+    ElMessage.success('点赞成功');
+  } else {
+    userStore.user.userLikes =
+      userStore.user.userLikes.filter(id => id !== tweet.value.id);
+    ElMessage.success('取消点赞成功');
+  }
 };
 
 const commentOnTweet = () => {
-  // 跳转到评论页面
+  if (!userStore.Token) {
+    ElMessage.error('请先登录');
+    return;
+  }
+  isComment.value = !isComment.value;
+  // TODO: 获取评论
+  // ...
 };
+
+defineExpose ({
+  isLike
+});
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .mb-3 {
   margin-bottom: 16px;
+}
+
+.comment {
+  width: 80%;
+  margin-left: 5%;
 }
 </style>

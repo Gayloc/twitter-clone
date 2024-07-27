@@ -1,22 +1,28 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-
+import { transformAssetUrls } from 'vite-plugin-vuetify';
 export default {
   devtools: { enabled: true },
+  build: {
+    transpile: ['vuetify']
+  },
   compatibilityDate: '2024-07-08',
   modules: [
     'vuetify-nuxt-module',
     '@nuxt/eslint',
     '@nuxtjs/color-mode',
-    "@nuxtjs/i18n"
+    '@nuxtjs/i18n',
+    '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
+    '@element-plus/nuxt'
   ],
-  // esline: {
-  //   config: {
-  //     stylke: true,
-  //   }
-  // },
-  // serverMiddleware: [
-  //   { path: '/api', handler: '~/api/tweets.ts' }
-  // ],
+
+  vite: {
+    vue: {
+      template: {
+        transformAssetUrls
+      }
+    }
+  },
 
   i18n: {
     vueI18n: './i18n.config.ts', // if you are using custom path, default
@@ -27,7 +33,7 @@ export default {
 
   colorMode: {
     preference: 'system', // default value of $colorMode.preference
-    fallback: 'light', // fallback value if not system preference found
+    fallback: 'light' // fallback value if not system preference found
   },
 
   vuetify: {
@@ -65,4 +71,4 @@ export default {
       }
     }
   }
-}
+};

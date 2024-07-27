@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-row class="d-flex justify-center">
-            <v-col cols="12" md="8">
+            <v-col cols="12" md="9">
                 <v-card v-if="tweet">
                     <v-card-title class="headline">{{ tweet.title }}</v-card-title>
                     <v-card-text>{{ tweet.content }}</v-card-text>
@@ -13,6 +13,6 @@
 </template>
 
 <script setup>
-const route = useRoute()
-const { data: tweet } = await $fetch("/api/tweets/" + route.params.id)
+const route = useRoute();
+const { data: tweet } = await $fetch('/api/tweets/' + route.params.id);
 </script>
