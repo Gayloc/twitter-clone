@@ -1,7 +1,6 @@
 <template>
-  <v-container>
+  <v-container >
     <v-navigation-drawer
-      :location="height.value < 400 ? 'bottom' : 'left'"
     >
       <v-list
         class="d-flex flex-column fill-height"
@@ -55,18 +54,4 @@ const logout = () => {
   userStore.logout();
   navigateTo('/login');
 };
-const { name } = useDisplay();
-const height = computed(() => {
-  // name is reactive and
-  // must use .value
-  switch (name.value) {
-    case 'xs': return 220;
-    case 'sm': return 400;
-    case 'md': return 500;
-    case 'lg': return 600;
-    case 'xl': return 800;
-    case 'xxl': return 1200;
-  }
-  return undefined;
-});
 </script>
