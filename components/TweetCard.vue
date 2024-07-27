@@ -27,6 +27,7 @@
 import { useUserStore } from '~/stores/user';
 const userStore = useUserStore();
 
+// 检查是否登录，防止includes报错空对象
 const isLike
   = !userStore.Token ?
     false : computed(() => userStore.user.userLikes.includes(tweet.value.id));
