@@ -73,6 +73,9 @@ const commentOnTweet = () => {
   // ...
 };
 
+defineExpose ({
+  isLike
+});
 </script>
 
 <style scoped lang="scss">
