@@ -87,7 +87,6 @@ const validate = async () => {
       myUser.name = name.value;
       myUser.email = email.value;
       myUser.age = select.value;
-      console.log(avatar.value);
         userStore.setUser(myUser);
     } else {
         ElMessage.error('Form is invalid!');
