@@ -28,7 +28,7 @@
   
   <script setup>
 import { ref } from 'vue';
-const avatar = ref(null);
+const avatar = defineModel('avatar', ref(null));
 const avatarPreview = ref(null);
 const fileInput = ref(null);
 const onFileChange = (e) => {
@@ -56,7 +56,7 @@ const triggerFileInput = () => {
     cursor: pointer;
     position: relative;
   }
-  
+
   .avatar-upload input[type="file"] {
     display: none;
   }

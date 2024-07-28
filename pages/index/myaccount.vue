@@ -21,7 +21,7 @@
           label="Age"
           required
         />
-        <avatar-page/>
+        <avatar-page v-model:avatar="avatar"/>
         <v-checkbox
           v-model="checkbox"
           :rules="[v => !!v || 'You must agree to continue!']"
@@ -64,8 +64,9 @@
   const userStore = useUserStore();
 const myUser = userStore.getUser();
 const form = ref(null);
-const name = ref(userStore.user.name);
-const email = ref(userStore.user.email);
+  const name = ref(userStore.user.name);
+  const email = ref(userStore.user.email);
+const avatar = ref(null);
 const nameRules = ref( [
     v => !!v || 'Name is required',
     v => (v && v.length <= 10) || 'Name must be less than 10 characters'
@@ -86,6 +87,7 @@ const validate = async () => {
       myUser.name = name.value;
       myUser.email = email.value;
       myUser.age = select.value;
+      console.log(avatar.value);
         userStore.setUser(myUser);
     } else {
         ElMessage.error('Form is invalid!');
