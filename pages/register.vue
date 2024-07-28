@@ -18,7 +18,8 @@
                         </v-form>
                     </v-card-text>
                     <v-card-actions class="d-flex justify-end">
-                        <v-btn color="primary">{{ $t('register') }}</v-btn>
+                        <v-btn color="primary" @click="console.log(test?.rows)">
+                            {{ $t('register') }}</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-col>
@@ -26,11 +27,15 @@
     </v-container>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 
 const email = ref('');
 const password = ref('');
+
+const { data: test } = await useFetch('/api/test', {
+    method: 'GET'
+});
 </script>
 
 <style scoped>
