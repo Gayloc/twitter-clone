@@ -40,7 +40,7 @@ const email = ref('');
 const password = ref('');
 
 const login = async () => {
-  const res = await useFetch('/api/login/login');
+  const res = await useFetch('/api/user/login');
   userStore.setUser(res.data._rawValue.data[0].user);
   userStore.setToken(res.data._rawValue.data[1].Token);
   ElMessage.success('Login successful!');
