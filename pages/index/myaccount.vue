@@ -1,6 +1,5 @@
 <template>
     <v-sheet class="mx-auto">
-  
       <v-form ref="form">
         <v-text-field
           v-model="name"
@@ -22,14 +21,12 @@
           label="Age"
           required
         />
-  
         <v-checkbox
           v-model="checkbox"
           :rules="[v => !!v || 'You must agree to continue!']"
           label="Do you agree?"
           required
         />
-  
         <div class="d-flex flex-row justify-end">
           <v-btn
             class="mt-4"
