@@ -6,4 +6,3 @@ export default defineEventHandler(async () => {
       rows
     };
   });
-  
