@@ -21,6 +21,7 @@
           label="Age"
           required
         />
+        <avatar-page/>
         <v-checkbox
           v-model="checkbox"
           :rules="[v => !!v || 'You must agree to continue!']"
