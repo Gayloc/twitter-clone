@@ -99,6 +99,6 @@ const reset = () => {
     checkbox.value = false;
 };
 const resetValidation = () => {
-          form.value.resetValidation();
-        };
+  form.value.resetValidation();
+};
   </script>
