@@ -1,19 +1,71 @@
-export default defineEventHandler(() => {
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+
+interface loginBody {
+  email: string;
+  password: string;
+}
+
+interface user {
+    id: number;
+    email: string;
+    password: string;
+    userName: string;
+    avatar: string;
+    age: number;
+}
+
+interface userRows { 
+    rows: user[]; 
+}
+
+const runtimeConfig = useRuntimeConfig();
+const JWT_SECRET = runtimeConfig.jwtSecret;
+
+export default defineEventHandler(async (event) => {
+    const body = await readBody<loginBody>(event);
+    const { email, password } = body;
+    if (!email || !password) {
+        createError({
+            statusCode: 400,
+            statusMessage: 'Email and password are required'
+        });
+    }
+    const db = useDatabase();
+    const user = await db.sql<userRows>`SELECT * FROM users WHERE email = ${email};`;
+    if (user.rows.length === 0) {
+        createError({
+            statusCode: 400,
+            statusMessage: 'Invalid email or password'
+        });
+    }
+
+    const foundUser = user.rows[0];
+    const passwordMatch = await bcrypt.compare(password, foundUser.password);
+
+    if (!passwordMatch) {
+        createError({
+            statusCode: 400,
+            statusMessage: 'Invalid email or password'
+        });
+    }
+
+    const token = jwt
+        .sign(
+            { userId: foundUser.id, userName: foundUser.userName },
+            JWT_SECRET,
+            { expiresIn: '180d' }
+    );
+    
+    setCookie(event, 'auth_token', token, {
+        httpOnly: true,
+        secure: false,
+        maxAge: 1000 * 60 * 60 * 24 * 180 // 180 days
+    });
+
     return {
-        data: [
-            {
-                user:
-                {
-                    id: 1,
-                    name: 'John',
-                    age: 30,
-                    email: 'john@example.com',
-                    userLikes: []
-                }
-            },
-            {
-                Token:'666'
-            }
-      ]
+        success: true,
+        message: 'Login successful',
+        token
     };
-  });  
+});
