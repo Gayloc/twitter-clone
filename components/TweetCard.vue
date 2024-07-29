@@ -40,11 +40,13 @@ const userStore = useUserStore();
 const rating = ref(0);
 
 // 检查是否登录，防止includes报错空对象
-const isLike
-  = !userStore.Token ?
-    false : computed(() => userStore.user.userLikes.includes(tweet.value.id));
+// const isLike
+//   = !userStore.Token ?
+//     false : computed(() => userStore.likeList.includes(tweet.value.id));
 const localePath = useLocalePath();
 const isComment = ref(false);
+
+const isLike = ref(false);
 
 const props = defineProps({
   tweet: {
