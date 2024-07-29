@@ -116,6 +116,15 @@ const validate = async () => {
         ElMessage.success('Form is valid!');
         // TODO 后端验证
       // ...
+      const formData = new FormData();
+      formData.append('name', name.value);
+      formData.append('email', email.value);
+      formData.append('age', select.value);
+      formData.append('avatar', avatar.value);
+      const res = await $fetch('/api/user/update', {
+        method: 'PUT',
+        body: formData
+      });
     } else {
         ElMessage.error('Form is invalid!');
     }
