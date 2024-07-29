@@ -1,4 +1,33 @@
 <template>
+    <v-card>
+      <div class="text-center pa-4">
+        <v-dialog
+          v-model="dialog"
+          max-width="400"
+          persistent
+        >
+          <v-card
+            text="在下边输入你的账户密码，确认删除你的账号。"
+            title="确定要删除你的账号吗?"
+          >
+          <v-text-field 
+            v-model="password"
+            label="请输入密码"
+            type="password"
+            required
+          />
+            <template #actions>
+              <v-spacer/>
+              <v-btn @click="dialog = false">
+                取消
+              </v-btn>
+              <v-btn @click="deleteUser">
+                确认
+              </v-btn>
+            </template>
+          </v-card>
+        </v-dialog>
+      </div>
     <v-sheet class="mx-auto">
       <v-form ref="form">
         <v-text-field
@@ -58,13 +87,17 @@
         </div>
       </v-form>
     </v-sheet>
+    <v-btn class="mt-4" color="error" @click="dialog = true">DELETE ACCOUNT</v-btn>
+  </v-card>
   </template>
   <script setup>
   import { useUserStore } from '~/stores/user';
   const userStore = useUserStore();
-const myUser = userStore.getUser();
+  const myUser = userStore.getUser();
+  const dialog = ref(false);
+  const password = ref('');
 const form = ref(null);
-  const name = ref(userStore.user.name);
+  const name = ref(userStore.user.userName);
   const email = ref(userStore.user.email);
 const avatar = ref(null);
 const nameRules = ref( [
@@ -101,5 +134,37 @@ const reset = () => {
 };
 const resetValidation = () => {
   form.value.resetValidation();
+  };
+  const deleteUser = async () => {
+    if (password.value === '') {
+      ElMessage.error('请输入密码');
+      return;
+    }
+    dialog.value = false;
+    try {
+      const res = await $fetch('/api/user/delete', {
+        method: 'DELETE',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          password: password.value
+        })
+      });
+      if (!res.success)
+      {
+        ElMessage.error(res.message);
+        password.value = '';
+      }
+      if (res.success) {
+        userStore.setUser(null);
+        ElMessage.success('删除成功');
+        password.value = '';
+        navigateTo('/login');
+      }
+    } catch (error) {
+      ElMessage.error('删除失败');
+      password.value = '';
+    }
 };
   </script>
