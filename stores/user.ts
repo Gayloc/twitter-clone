@@ -9,6 +9,15 @@ interface User {
   age: number;
 }
 
+interface userLike {
+  user_id: number;
+  like_id: number;
+}
+
+interface userLikeList {
+  rows: userLike[];
+}
+
 export const useUserStore = defineStore(
   'user',
   () => {
@@ -29,6 +38,13 @@ export const useUserStore = defineStore(
     const logout = () => {
         Token.value = '';
         user.value = null;
+    };
+    const likeList = ref<userLikeList | null>(null);
+    const setLikeList = (newLikeList: userLikeList) => {
+        likeList.value = newLikeList;
+      };
+    const getLikeList = () => {
+        return likeList.value;
       };
     return {
       Token,
@@ -37,7 +53,10 @@ export const useUserStore = defineStore(
       user,
       setUser,
       getUser,
-      logout
+      logout,
+      likeList,
+      setLikeList,
+      getLikeList
     };
   },
   {
