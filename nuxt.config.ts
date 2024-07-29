@@ -13,7 +13,8 @@ export default {
     '@nuxtjs/i18n',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    '@element-plus/nuxt'
+    '@element-plus/nuxt',
+    '@nuxtjs/dotenv'
   ],
 
   vite: {
@@ -42,6 +43,10 @@ export default {
     locales: ['zh', 'en'],
     strategy: 'prefix_except_default', 
     defaultLocale: 'zh'
+  },
+
+  runtimeConfig: {
+    jwtSecret: process.env.JWT_SECRET
   },
 
   colorMode: {
