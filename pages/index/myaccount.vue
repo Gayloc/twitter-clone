@@ -93,7 +93,6 @@
   <script setup>
   import { useUserStore } from '~/stores/user';
   const userStore = useUserStore();
-  const myUser = userStore.getUser();
   const dialog = ref(false);
   const password = ref('');
 const form = ref(null);
@@ -117,10 +116,6 @@ const validate = async () => {
         ElMessage.success('Form is valid!');
         // TODO 后端验证
       // ...
-      myUser.name = name.value;
-      myUser.email = email.value;
-      myUser.age = select.value;
-        userStore.setUser(myUser);
     } else {
         ElMessage.error('Form is invalid!');
     }
