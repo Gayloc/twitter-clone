@@ -14,13 +14,11 @@
   "dependencies": {
     "@mdi/font": "^7.4.47",
     "@nuxt/types": "^2.18.1",
-    "@nuxtjs/dotenv": "^1.4.2",
     "@nuxtjs/i18n": "^8.3.1",
     "@pinia/nuxt": "^0.5.1",
     "@vueup/vue-quill": "^1.2.0",
     "@vueuse/core": "^10.11.0",
     "bcrypt": "^5.1.1",
-    "dotenv": "^16.4.5",
     "h3": "^1.12.0",
     "jsonwebtoken": "^9.0.2",
     "nuxt": "^3.12.3",

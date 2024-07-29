@@ -6,7 +6,13 @@ const runtimeConfig = useRuntimeConfig();
 const JWT_SECRET = runtimeConfig.jwtSecret;
 
 export default defineEventHandler(async (event) => {
+    if (event.req.url?.startsWith('/login')
+        || event.req.url?.startsWith('/register')
+        || event.req.url?.startsWith('/logout')) {
+        return; // 跳过认证中间件
+    }
     const token = getCookie(event, 'auth_token');
+    console.log('token', token);
 
     if (!token){
         throw createError({

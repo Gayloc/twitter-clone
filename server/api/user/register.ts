@@ -8,9 +8,9 @@ interface registerBody {
 interface user {
     id: number;
     email: string;
-    password: string;
-    userName: string;
+    user_name: string;
     avatar: string;
+    password: string;
     age: number;
 }
 
@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
     const { email, password } = body;
 
     if (!email || !password) {
-        createError({
+        throw createError({
             statusCode: 400,
             statusMessage: 'Email and password are required'
         });
@@ -34,8 +34,8 @@ export default defineEventHandler(async (event) => {
     const existingUser = 
         await db.sql<userRows>`SELECT * FROM users WHERE email = ${email}`;
     
-    if (existingUser.rows.length !== 0) {
-        createError({
+    if (existingUser.rows.length > 0) {
+        throw createError({
             statusCode: 400,
             statusMessage: 'User already exists'
         });

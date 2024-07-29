@@ -13,8 +13,7 @@ export default {
     '@nuxtjs/i18n',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    '@element-plus/nuxt',
-    '@nuxtjs/dotenv'
+    '@element-plus/nuxt'
   ],
 
   vite: {

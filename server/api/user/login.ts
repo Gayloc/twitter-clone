@@ -9,9 +9,9 @@ interface loginBody {
 interface user {
     id: number;
     email: string;
-    password: string;
-    userName: string;
+    user_name: string;
     avatar: string;
+    password: string;
     age: number;
 }
 
@@ -52,7 +52,7 @@ export default defineEventHandler(async (event) => {
 
     const token = jwt
         .sign(
-            { userId: foundUser.id, userName: foundUser.userName },
+            { userId: foundUser.id, userName: foundUser.user_name },
             JWT_SECRET,
             { expiresIn: '180d' }
     );
