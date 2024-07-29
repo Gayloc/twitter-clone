@@ -23,12 +23,29 @@ export default {
       }
     }
   },
+  
+  nitro: {
+    storage: {
+      'local': {
+        driver: 'fs',
+        base: './data'
+      }
+    },
+    experimental: {
+      asyncContext: true,
+      database: true
+    }
+  },
 
   i18n: {
     vueI18n: './i18n.config.ts', // if you are using custom path, default
     locales: ['zh', 'en'],
     strategy: 'prefix_except_default', 
     defaultLocale: 'zh'
+  },
+
+  runtimeConfig: {
+    jwtSecret: process.env.JWT_SECRET
   },
 
   colorMode: {

@@ -1,6 +1,7 @@
 <template>
-  <v-container>
-    <v-navigation-drawer>
+  <v-container >
+    <v-navigation-drawer
+    >
       <v-list
         class="d-flex flex-column fill-height"
         density="compact"
@@ -12,7 +13,7 @@
             v-else
             prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg"
             :subtitle="userStore.user.email"
-            :title="userStore.user.name"
+            :title="userStore.user.userName"
           />
           <v-divider/>
           <v-list-item
@@ -49,8 +50,11 @@ const items = ref([
   { title: 'About', route: '/about', icon: 'mdi-information' }
 ]);
 
-const logout = () => {
-  userStore.logout();
+const logout = async () => {
+  const response = await $fetch('/api/user/logout');
+  userStore.setToken('');
+  userStore.setUser({});
+  ElMessage.success(response.message);
   navigateTo('/login');
 };
 </script>

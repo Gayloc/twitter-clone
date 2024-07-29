@@ -1,6 +1,10 @@
 <template>
   <v-card class="mb-3" @click="goToDetail">
-    <v-card-text>{{ tweet.content }}</v-card-text>
+    <v-img
+      src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+      cover
+    />
+    <v-card-title class="d-flex justify-center">{{ tweet.content }}</v-card-title>
     <v-card-actions>
       <v-btn icon @click.stop="likeTweet">
         <v-icon v-if="isLike">
@@ -11,6 +15,13 @@
         </v-icon>
       </v-btn>
       <v-btn icon="mdi-comment-outline" @click.stop="commentOnTweet"/>
+      <v-spacer/>
+        <v-rating
+          v-model="rating"
+          size="x-small"
+          hover
+          @click.stop="event.stopPropagation()"
+        />
     </v-card-actions>
     <v-card
       v-if="isComment"
@@ -26,13 +37,16 @@
 <script setup>
 import { useUserStore } from '~/stores/user';
 const userStore = useUserStore();
+const rating = ref(0);
 
 // 检查是否登录，防止includes报错空对象
-const isLike
-  = !userStore.Token ?
-    false : computed(() => userStore.user.userLikes.includes(tweet.value.id));
+// const isLike
+//   = !userStore.Token ?
+//     false : computed(() => userStore.likeList.includes(tweet.value.id));
 const localePath = useLocalePath();
 const isComment = ref(false);
+
+const isLike = ref(false);
 
 const props = defineProps({
   tweet: {

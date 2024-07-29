@@ -39,12 +39,48 @@ const userStore = useUserStore();
 const email = ref('');
 const password = ref('');
 
+const setUserStore = async () => {
+  const response =
+    await $fetch('/api/user/userInfo');
+  if (response.success) {
+    userStore.setUser(response.userIn);
+    ElMessage.success(response.message);
+  }
+  if (!response.success) {
+    ElMessage.error(response.message);
+  }
+};
+
 const login = async () => {
-  const res = await useFetch('/api/login/login');
-  userStore.setUser(res.data._rawValue.data[0].user);
-  userStore.setToken(res.data._rawValue.data[1].Token);
-  ElMessage.success('Login successful!');
-  navigateTo('/');
+  if (!email.value || !password.value) {
+    error.value = 'Email and password are required';
+    return;
+  }
+
+  try { 
+    const response = await $fetch('/api/user/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email.value,
+        password: password.value
+      })
+    });
+    if (!response.success) {
+      ElMessage.error(response.message);
+      throw new Error(response.message);
+    }
+    if (response.success) { 
+      ElMessage.success(response.message);
+      userStore.setToken(response.token);
+      setUserStore();
+      navigateTo('/');
+    }
+  } catch (error) {
+    ElMessage.error(error.message);
+  }
 };
 </script>
 

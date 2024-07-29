@@ -1,6 +1,5 @@
 <template>
     <v-sheet class="mx-auto">
-  
       <v-form ref="form">
         <v-text-field
           v-model="name"
@@ -22,14 +21,13 @@
           label="Age"
           required
         />
-  
+        <avatar-page v-model:avatar="avatar"/>
         <v-checkbox
           v-model="checkbox"
           :rules="[v => !!v || 'You must agree to continue!']"
           label="Do you agree?"
           required
         />
-  
         <div class="d-flex flex-row justify-end">
           <v-btn
             class="mt-4"
@@ -66,8 +64,9 @@
   const userStore = useUserStore();
 const myUser = userStore.getUser();
 const form = ref(null);
-const name = ref(userStore.user.name);
-const email = ref(userStore.user.email);
+  const name = ref(userStore.user.name);
+  const email = ref(userStore.user.email);
+const avatar = ref(null);
 const nameRules = ref( [
     v => !!v || 'Name is required',
     v => (v && v.length <= 10) || 'Name must be less than 10 characters'
@@ -101,6 +100,6 @@ const reset = () => {
     checkbox.value = false;
 };
 const resetValidation = () => {
-          form.value.resetValidation();
-        };
+  form.value.resetValidation();
+};
   </script>
