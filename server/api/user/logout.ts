@@ -4,4 +4,9 @@ export default defineEventHandler(async (event) => {
         secure: false,
         maxAge: -1
     });
+    return {
+        statusCode: 200,
+        success: true,
+        message: 'Logged out successfully'
+    };
 });

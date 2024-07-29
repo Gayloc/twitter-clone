@@ -26,7 +26,7 @@ export default defineEventHandler(async (event) => {
     const body = await readBody<loginBody>(event);
     const { email, password } = body;
     if (!email || !password) {
-        createError({
+        throw createError({
             statusCode: 400,
             statusMessage: 'Email and password are required'
         });
@@ -34,7 +34,7 @@ export default defineEventHandler(async (event) => {
     const db = useDatabase();
     const user = await db.sql<userRows>`SELECT * FROM users WHERE email = ${email};`;
     if (user.rows.length === 0) {
-        createError({
+        throw createError({
             statusCode: 400,
             statusMessage: 'Invalid email or password'
         });
@@ -44,7 +44,7 @@ export default defineEventHandler(async (event) => {
     const passwordMatch = await bcrypt.compare(password, foundUser.password);
 
     if (!passwordMatch) {
-        createError({
+        throw createError({
             statusCode: 400,
             statusMessage: 'Invalid email or password'
         });
