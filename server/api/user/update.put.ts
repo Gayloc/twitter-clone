@@ -60,7 +60,7 @@ export default defineEventHandler(async (event) => {
 
         // 处理 files.avatar 是数组的情况
         const avatar = Array.isArray(files.avatar) ? files.avatar[0] : files.avatar;
-        if (!avatar) {
+        if (!avatar || !avatar.filepath || !avatar.originalFilename) {
           reject(new Error('Avatar file is missing'));
           return;
         }
