@@ -31,33 +31,43 @@
 </template>
 
 <script setup>
+// 导入用户设置
 import { ref } from 'vue';
 import { useUserStore } from '~/stores/user';
 const localePath = useLocalePath();
 const userStore = useUserStore();
 
+// 定义数据
 const email = ref('');
 const password = ref('');
 
+// TODO 获取用户信息函数
 const setUserStore = async () => {
+  // TODO 调用接口获取用户信息
   const response =
     await $fetch('/api/user/userInfo');
+    // TODO 成功操作
   if (response.success) {
     userStore.setUser(response.userIn);
     ElMessage.success(response.message);
   }
+  // TODO 失败操作
   if (!response.success) {
     ElMessage.error(response.message);
   }
 };
 
+// TODO 登录
 const login = async () => {
+  // TODO 验证邮箱和密码是否为空
   if (!email.value || !password.value) {
     error.value = 'Email and password are required';
     return;
   }
 
+  // TODO 调用登录接口
   try { 
+    // TODO 调用登录接口
     const response = await $fetch('/api/user/login', {
       method: 'POST',
       headers: {
@@ -68,10 +78,12 @@ const login = async () => {
         password: password.value
       })
     });
+    // TODO 失败操作
     if (!response.success) {
       ElMessage.error(response.message);
       throw new Error(response.message);
     }
+    // TODO 成功操作
     if (response.success) { 
       ElMessage.success(response.message);
       userStore.setToken(response.token);
