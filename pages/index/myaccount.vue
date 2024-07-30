@@ -91,47 +91,73 @@
   </v-card>
   </template>
   <script setup>
+  // 导入用户设置
   import { useUserStore } from '~/stores/user';
   const userStore = useUserStore();
+
+  // 验证是否要注销账户
   const dialog = ref(false);
+
+  // 定义表单数据
   const password = ref('');
 const form = ref(null);
   const name = ref(userStore.user.userName);
   const email = ref(userStore.user.email);
-const avatar = ref(null);
+  const avatar = ref(null);
+
+  // 用户名验证
 const nameRules = ref( [
     v => !!v || 'Name is required',
     v => (v && v.length <= 10) || 'Name must be less than 10 characters'
 ]);
+
+// 邮箱验证
 const emailRules = ref( [
     v => !!v || 'Email is required',
     v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'Email is invalid'
 ]);
-const ages = ref(Array.from({ length: 100 }, (_, i) => i + 1));
-const select = ref(userStore.user.age);
+
+// 年龄下拉框
+  const ages = ref(Array.from({ length: 100 }, (_, i) => i + 1));
+
+  // 定义选择数据
+  const select = ref(userStore.user.age);
+
+  // 定义复选框数据，确认修改
   const checkbox = ref(false);
+
+  // TODO 获取用户信息
   const setUserStore = async () => {
+    // TODO 获取用户信息
   const response =
-    await $fetch('/api/user/userInfo');
+      await $fetch('/api/user/userInfo');
+    // TODO 成功操作
   if (response.success) {
     userStore.setUser(response.userIn);
     ElMessage.success(response.message);
   }
+  // TODO 失败操作
   if (!response.success) {
     ElMessage.error(response.message);
   }
-};
-const validate = async () => {
+  };
+
+  // TODO 提交表单
+  const validate = async () => {
+  // TODO 验证表单
     const { valid } = await form.value.validate();
     if (valid) {
-        ElMessage.success('Form is valid!');
-        // TODO 后端验证
-      // ...
+      // TODO 表单验证成功操作
+      ElMessage.success('Form is valid!');
+
+      // TODO 包装FormData信息
       const formData = new FormData();
       formData.append('name', name.value);
       formData.append('email', email.value);
       formData.append('age', select.value.toString());
       formData.append('avatar', avatar.value);
+
+      // TODO 发送请求
       try {
         const res = await $fetch('/api/user/update', {
         method: 'PUT',
@@ -150,17 +176,23 @@ const validate = async () => {
     } else {
         ElMessage.error('Form is invalid!');
     }
-};
+  };
+
+  // TODO 重置表单
 const reset = () => {
     form.value.reset();
     name.value = userStore.user.name;
     email.value = userStore.user.email;
     select.value = userStore.user.age;
     checkbox.value = false;
-};
+  };
+
+  // TODO 重置表单验证
 const resetValidation = () => {
   form.value.resetValidation();
   };
+
+  // TODO 删除账户
   const deleteUser = async () => {
     if (password.value === '') {
       ElMessage.error('请输入密码');
