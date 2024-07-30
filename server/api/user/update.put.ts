@@ -76,7 +76,7 @@ export default defineEventHandler(async (event) => {
         
           // TODO 重命名文件
           fs.renameSync(avatar.filepath, newFilepath);
-        const avatarUrl = `/public/${newFilename}`;
+        const avatarUrl = `/_nuxt/public/avatars/${newFilename}`;
 
         // TODO 更新用户信息
         const count =

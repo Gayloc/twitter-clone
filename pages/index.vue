@@ -37,9 +37,8 @@
   </v-container>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useUserStore } from '~/stores/user';
-
 const userStore = useUserStore();
 
 const items = ref([
