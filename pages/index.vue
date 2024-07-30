@@ -11,9 +11,9 @@
           />
           <v-list-item
             v-else
-            :prepend-avatar="userStore.user.avatar"
-            :subtitle="userStore.user.email"
-            :title="userStore.user.userName"
+            :prepend-avatar="userStore.user === null? '' : userStore.user.avatar"
+            :subtitle="userStore.user === null? '' : userStore.user.email"
+            :title="userStore.user === null? '' : userStore.user.userName"
           />
           <v-divider/>
           <v-list-item
@@ -38,9 +38,11 @@
 </template>
 
 <script setup lang="ts">
+// 用户设置
 import { useUserStore } from '~/stores/user';
 const userStore = useUserStore();
 
+// 菜单项
 const items = ref([
   { title: 'Home', route: '/main' , icon: 'mdi-home-account'},
   { title: 'My Like', route: '/mylike', icon: 'mdi-thumb-up-outline' },
@@ -49,10 +51,10 @@ const items = ref([
   { title: 'About', route: '/about', icon: 'mdi-information' }
 ]);
 
+// TODO 登出
 const logout = async () => {
   const response = await $fetch('/api/user/logout');
-  userStore.setToken('');
-  userStore.setUser({});
+  userStore.logout();
   ElMessage.success(response.message);
   navigateTo('/login');
 };
