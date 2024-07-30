@@ -11,7 +11,7 @@
           />
           <v-list-item
             v-else
-            prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg"
+            :prepend-avatar="userStore.user.avatar"
             :subtitle="userStore.user.email"
             :title="userStore.user.userName"
           />
