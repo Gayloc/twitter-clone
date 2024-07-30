@@ -35,6 +35,7 @@
 </template>
 
 <script setup>
+// 导入用户设置
 import { useUserStore } from '~/stores/user';
 const userStore = useUserStore();
 const rating = ref(0);
@@ -48,6 +49,7 @@ const isComment = ref(false);
 
 const isLike = ref(false);
 
+// TODO 从父组件导入标题
 const props = defineProps({
   tweet: {
     type: Object,
@@ -55,13 +57,16 @@ const props = defineProps({
   }
 });
 
+// 展开标题
 const { tweet } = toRefs(props);
 const router = useRouter();
 
+// TODO 点击卡片跳转到详情页
 const goToDetail = () => {
   router.push(localePath(`/detail/${tweet.value.id}`));
 };
 
+// TODO 点赞
 const likeTweet = () => {
   if (!userStore.Token) {
     ElMessage.error('请先登录');
@@ -79,6 +84,7 @@ const likeTweet = () => {
   }
 };
 
+// TODO 评论页
 const commentOnTweet = () => {
   if (!userStore.Token) {
     ElMessage.error('请先登录');
@@ -89,6 +95,7 @@ const commentOnTweet = () => {
   // ...
 };
 
+// 导出点赞详情给父组件
 defineExpose ({
   isLike
 });
