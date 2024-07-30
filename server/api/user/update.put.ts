@@ -31,20 +31,29 @@ export default defineEventHandler(async (event) => {
   // 获取用户信息,身份验证
   const userInfo = event.context.auth;
 
+  // 解析表单数据
   return new Promise<{ success: boolean; message: string; }>((resolve, reject) => {
+    // 解析表单数据
     form.parse(event.node.req, async (err, fields: Fields, files: Files) => { 
+      // 处理错误
       if (err) {
         reject(err);
       } else { 
+
+        // 验证字段name
         if (fields.name === undefined ||!fields.name || fields.name.length === 0) {
           reject(new Error('invalid name'));
           return;
         }
+
+        // name为空错误
         const name = fields.name[0];
         if (fields.email === undefined ||!fields.email || fields.email.length === 0) {
           reject(new Error('invalid email'));
           return;
         }
+
+        // email为空错误
         const email = fields.email[0];
         if (fields.age === undefined ||!fields.age || fields.age.length === 0) {
           reject(new Error('invalid age'));
