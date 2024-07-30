@@ -24,6 +24,7 @@
             label="title"
             required
             />
+            <ImgCard v-model:img="cover" />
         </v-col>
         <v-col cols="12">
             <div style="min-height: 30%;">
@@ -50,4 +51,5 @@ const titleRules = [
   v => !!v || 'Title is required'
 ];
 const content = '';
+const cover = ref('');
 </script>
