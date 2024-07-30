@@ -17,28 +17,35 @@
         </v-col>
         </v-col>
         <v-divider/>
-        <v-col>
-            <v-text-field
-            v-model="title"
-            :rules="titleRules"
-            label="title"
-            required
-            />
-            <ImgCard v-model:img="cover" />
-        </v-col>
-        <v-col cols="12">
-            <div style="min-height: 30%;">
-                <QuillEditor 
-                    v-model:content="content"
-                    theme="snow"
-                    style="min-height: 150px;"
+        <v-divider/>
+        <v-card style="min-width: 100%;" variant="outlined">
+            <v-card-title class="headline text-center">
+                Publish Article
+            </v-card-title>
+            <v-col>
+                <v-text-field
+                v-model="title"
+                :rules="titleRules"
+                label="title"
+                required
                 />
-            </div>
-        </v-col>
-        <v-col cols="12" class="d-flex justify-end">
-            <v-btn color="primary" class="mr-4" @click="submit">Submit</v-btn>
-            <v-btn color="error" @click="reset">Reset</v-btn>
-        </v-col>
+                <ImgCard v-model:img="cover" />
+            </v-col>
+            <v-col cols="12">
+                <div style="min-height: 30%;">
+                    <QuillEditor 
+                        v-model:content="content"
+                        theme="snow"
+                        style="min-height: 150px;"
+                        content-type="html"
+                    />
+                </div>
+            </v-col>
+            <v-col cols="12" class="d-flex justify-end">
+                <v-btn color="primary" class="mr-4" @click="submit">Submit</v-btn>
+                <v-btn color="error" @click="reset">Reset</v-btn>
+            </v-col>
+        </v-card>
     </v-row>
 </template>
 
@@ -50,6 +57,13 @@ const title = ref('');
 const titleRules = [
   v => !!v || 'Title is required'
 ];
-const content = '';
+const content = ref('');
 const cover = ref('');
+
+const submit = () => {
+    const formData = new FormData();
+    formData.append('title', title.value);
+    formData.append('content', content.value);
+    formData.append('cover', cover.value);
+};
 </script>
