@@ -119,12 +119,22 @@ const validate = async () => {
       const formData = new FormData();
       formData.append('name', name.value);
       formData.append('email', email.value);
-      formData.append('age', select.value);
+      formData.append('age', select.value.toString());
       formData.append('avatar', avatar.value);
-      const res = await $fetch('/api/user/update', {
+      try {
+        const res = await $fetch('/api/user/update', {
         method: 'PUT',
         body: formData
-      });
+        });
+        if (!res.success) {
+          ElMessage.error(res.message);
+        }
+        if (res.success) {
+          ElMessage.success(res.message);
+        }
+      } catch (error) {
+        ElMessage.error(res.message);
+      }
     } else {
         ElMessage.error('Form is invalid!');
     }
