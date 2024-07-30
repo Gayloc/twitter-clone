@@ -88,7 +88,7 @@ export default defineEventHandler(async (event) => {
         }
 
         // TODO 返回成功信息
-        resolve({ success: true, message: 'Avatar updated successfully' });
+        resolve({ success: true, message: 'UserInfo updated successfully' });
       }
     });
   });

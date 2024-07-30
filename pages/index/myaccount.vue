@@ -109,7 +109,18 @@ const emailRules = ref( [
 ]);
 const ages = ref(Array.from({ length: 100 }, (_, i) => i + 1));
 const select = ref(userStore.user.age);
-const checkbox = ref(false);
+  const checkbox = ref(false);
+  const setUserStore = async () => {
+  const response =
+    await $fetch('/api/user/userInfo');
+  if (response.success) {
+    userStore.setUser(response.userIn);
+    ElMessage.success(response.message);
+  }
+  if (!response.success) {
+    ElMessage.error(response.message);
+  }
+};
 const validate = async () => {
     const { valid } = await form.value.validate();
     if (valid) {
@@ -131,6 +142,7 @@ const validate = async () => {
         }
         if (res.success) {
           ElMessage.success(res.message);
+          setUserStore();
         }
       } catch (error) {
         ElMessage.error(res.message);
