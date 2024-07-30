@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
+// 用户接口
 interface User {
   id: number;
   email: string;
@@ -9,6 +10,7 @@ interface User {
   age: number;
 }
 
+// 点赞列表接口
 interface userLike {
   user_id: number;
   like_id: number;
