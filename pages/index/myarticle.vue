@@ -17,6 +17,14 @@
         </v-col>
         </v-col>
         <v-divider/>
+        <v-col>
+            <v-text-field
+            v-model="title"
+            :rules="titleRules"
+            label="title"
+            required
+            />
+        </v-col>
         <v-col cols="12">
             <div style="min-height: 30%;">
                 <QuillEditor 
@@ -37,5 +45,9 @@
 import { QuillEditor } from '@vueup/vue-quill';
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
+const title = ref('');
+const titleRules = [
+  v => !!v || 'Title is required'
+];
 const content = '';
 </script>
