@@ -43,7 +43,6 @@ export default defineEventHandler(async (event) => {
         });
     }
 
-    // 获取数据库连接
     const db = useDatabase();
 
     // 查询用户

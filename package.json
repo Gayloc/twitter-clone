@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
+    "start": "nuxt start",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -24,6 +25,7 @@
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
     "nuxt": "^3.12.3",
+    "nuxt-app": "file:",
     "pinia": "^2.1.7",
     "vue": "latest",
     "vuetify-nuxt-module": "^0.14.1"
