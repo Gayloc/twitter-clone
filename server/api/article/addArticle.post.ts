@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
   await authMiddle(event);
 
   // 文件夹
-  const uploadDir = path.join(process.cwd(), 'public' , 'avatars');
+  const uploadDir = path.join(process.cwd(), 'public' , 'cover');
   if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir);
   }
@@ -41,28 +41,28 @@ export default defineEventHandler(async (event) => {
       } else { 
 
         // 验证字段title
-        if (fields.title === undefined ||!fields.title || fields.title.length === 0) {
+        if (fields.title === undefined ||!fields.title || fields.title.length === 0 || fields.title[0] === '') {
           reject(new Error('invalid title'));
           return;
         }
         const title = fields.title[0];
 
         // content为空错误
-        if (fields.content === undefined ||!fields.content || fields.content.length === 0) {
+        if (fields.content === undefined ||!fields.content || fields.content.length === 0 || fields.content[0] === '') {
           reject(new Error('invalid content'));
           return;
         }
           const content = fields.content[0];
           
           // 验证字段author_name
-        if (fields.author_name === undefined ||!fields.author_name || fields.author_name.length === 0) {
+        if (fields.author_name === undefined ||!fields.author_name || fields.author_name.length === 0 || fields.author_name[0] === '') {
             reject(new Error('invalid author_name'));
             return;
           }
           const author_name = fields.author_name[0];
 
         // cre_time为空错误
-        if (fields.cre_time === undefined ||!fields.cre_time || fields.cre_time.length === 0) {
+        if (fields.cre_time === undefined ||!fields.cre_time || fields.cre_time.length === 0 || fields.cre_time[0] === '') {
           reject(new Error('invalid cre_time'));
           return;
         }
@@ -94,7 +94,7 @@ export default defineEventHandler(async (event) => {
           fs.renameSync(cover.filepath, newFilepath);
           const coverUrl = `/_nuxt/public/cover/${newFilename}`;
           
-          db.sql`INSERT INTO posts (author_id, title, main, cover, cre_time, author_name) 
+          db.sql`INSERT INTO article (author_id, title, main, cover, cre_time, author_name) 
           VALUES (${userInfo.userId}, ${title}, ${content}, ${coverUrl}, ${cre_time}, ${author_name})`;
 
         // TODO 返回成功信息
