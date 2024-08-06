@@ -29,7 +29,6 @@ export default defineEventHandler(async (event) => {
     const db = useDatabase();
     const articles = await db.sql<articleList>`SELECT id, title, cover FROM article ORDER BY cre_time DESC LIMIT ${body.pageSize} OFFSET ${(body.page - 1) * body.pageSize}`;
     const count = await db.sql`SELECT COUNT(*) as count FROM article`;
-    console.log(articles);
     if (count.rows === undefined || count.rows.length === 0) {
         throw createError({
             statusCode: 400,
