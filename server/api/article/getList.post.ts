@@ -1,12 +1,8 @@
 
 interface article {
     id: number;
-    author_id: number;
     title: string;
-    content: string;
     cover: string;
-    cre_time: number;
-    author_name: string;
 }
 
 interface articleList {
@@ -31,8 +27,9 @@ export default defineEventHandler(async (event) => {
 
     // 获取数据库连接
     const db = useDatabase();
-    const articles = await db.sql<articleList>`SELECT * FROM article ORDER BY cre_time DESC LIMIT ${body.pageSize} OFFSET ${(body.page - 1) * body.pageSize}`;
+    const articles = await db.sql<articleList>`SELECT id, title, cover FROM article ORDER BY cre_time DESC LIMIT ${body.pageSize} OFFSET ${(body.page - 1) * body.pageSize}`;
     const count = await db.sql`SELECT COUNT(*) as count FROM article`;
+    console.log(articles);
     if (count.rows === undefined || count.rows.length === 0) {
         throw createError({
             statusCode: 400,
