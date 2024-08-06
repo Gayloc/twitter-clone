@@ -45,16 +45,16 @@ export default defineEventHandler(async (event) => {
           reject(new Error('invalid name'));
           return;
         }
-
-        // name为空错误
         const name = fields.name[0];
+
+        // email为空错误
         if (fields.email === undefined ||!fields.email || fields.email.length === 0) {
           reject(new Error('invalid email'));
           return;
         }
-
-        // email为空错误
         const email = fields.email[0];
+
+        // age为空错误
         if (fields.age === undefined ||!fields.age || fields.age.length === 0) {
           reject(new Error('invalid age'));
           return;
