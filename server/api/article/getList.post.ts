@@ -29,11 +29,18 @@ export default defineEventHandler(async (event) => {
     const db = useDatabase();
     const articles = await db.sql<articleList>`SELECT id, title, cover FROM article ORDER BY cre_time DESC LIMIT ${body.pageSize} OFFSET ${(body.page - 1) * body.pageSize}`;
     const count = await db.sql`SELECT COUNT(*) as count FROM article`;
-    if (count.rows === undefined || count.rows.length === 0) {
+    if (count.rows === undefined) {
         throw createError({
             statusCode: 400,
             message: '获取失败'
         });
+    }
+    if (articles.rows.length === 0) {
+        return {
+            success: false,
+            message: '文章列表为空',
+            count: count.rows[0].count
+        };
     }
     return {
         success: true,
