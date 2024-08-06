@@ -81,7 +81,7 @@ export default defineEventHandler(async (event) => {
         
           // 自定义文件名
           const newFilename = generateFilename(avatar.originalFilename , userInfo.userId);
-        const newFilepath = path.join(uploadDir, newFilename);
+          const newFilepath = path.join(uploadDir, newFilename);
 
           // TODO 重命名文件
           fs.renameSync(avatar.filepath, newFilepath);
