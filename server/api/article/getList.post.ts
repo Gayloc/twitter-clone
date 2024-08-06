@@ -35,16 +35,9 @@ export default defineEventHandler(async (event) => {
             message: '获取失败'
         });
     }
-        if (articles.rows.length === 0) {
-            return {
-                success: false,
-                message: '文章列表为空',
-                count: count.rows[0].count
-            };
-        }
-        return {
-            success: true,
-            articles: articles,
-            count: count.rows[0].count
-        };
+    return {
+        success: true,
+        articles: articles,
+        count: count.rows[0].count
+    };
 }); 
