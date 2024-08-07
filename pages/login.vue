@@ -49,6 +49,7 @@ const setUserStore = async () => {
     // TODO 成功操作
   if (response.success) {
     userStore.setUser(response.userIn);
+    userStore.setLikeList(response.likes);
     ElMessage.success(response.message);
   }
   // TODO 失败操作

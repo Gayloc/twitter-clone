@@ -52,18 +52,30 @@ const props = defineProps({
 const { tweet } = toRefs(props);
 const router = useRouter();
 
-// 检查是否登录，防止includes报错空对象
-// const isLike
-//   = !userStore.Token ?
-//     false : computed(() => userStore.likeList.includes(tweet.value.id));
 const localePath = useLocalePath();
 const isComment = ref(false);
-
-const isLike = ref(false);
+const isLike = ref(userStore.likeList.map(item => item.like_id).includes(tweet.value.id));
 
 // TODO 点击卡片跳转到详情页
 const goToDetail = () => {
   router.push(localePath(`/detail/${tweet.value.id}`));
+};
+
+// TODO 获取用户信息函数
+const setUserStore = async () => {
+  // TODO 调用接口获取用户信息
+  const response =
+    await $fetch('/api/user/userInfo');
+    // TODO 成功操作
+  if (response.success) {
+    userStore.setUser(response.userIn);
+    userStore.setLikeList(response.likes);
+    ElMessage.success(response.message);
+  }
+  // TODO 失败操作
+  if (!response.success) {
+    ElMessage.error(response.message);
+  }
 };
 
 // TODO 点赞
@@ -88,6 +100,7 @@ const likeTweet = async () => {
     if (response.success) {
       isLike.value = !isLike.value;
       ElMessage.success(response.message);
+      setUserStore();
     }
   } catch (error) {
     ElMessage.error(response.message);
