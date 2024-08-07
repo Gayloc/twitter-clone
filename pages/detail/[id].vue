@@ -2,9 +2,13 @@
     <v-container>
         <v-row class="d-flex justify-center">
             <v-col cols="12" md="9">
-                <v-card v-if="tweet">
-                    <v-card-title class="headline justify-center">{{ tweet.title }}</v-card-title>
-                    <v-card-text>{{ tweet.main }}</v-card-text>
+                <v-card v-if="tweet" style="width: 100%;">
+                    <v-card-title class="headline text-center ">
+                        {{ tweet.title }}
+                    </v-card-title>
+                    <v-card-text style="font-size: 1.2rem;">
+                        {{ tweet.main }}
+                    </v-card-text>
                 </v-card>
                 <v-alert v-else type="info">{{ $t('loading') }}</v-alert>
             </v-col>
@@ -34,3 +38,9 @@ onMounted(async () => {
     await getTweet();
 });
 </script>
+
+<style scoped lang="scss">
+.v-card-title {
+    font-size: 2rem;
+}
+</style>

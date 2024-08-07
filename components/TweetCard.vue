@@ -4,7 +4,9 @@
       :src="tweet.cover"
       cover
     />
-    <v-card-title class="d-flex justify-center">{{ tweet.title }}</v-card-title>
+    <v-card-title class="d-flex justify-center">
+      {{ tweet.title === '' ? '无标题' : tweet.title }}
+    </v-card-title>
     <v-card-actions>
       <v-btn icon @click.stop="likeTweet">
         <v-icon v-if="isLike">
@@ -132,5 +134,12 @@ defineExpose ({
 .comment {
   width: 80%;
   margin-left: 5%;
+}
+
+.v-card-title {
+  font-size: 1.2rem;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
 }
 </style>
