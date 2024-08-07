@@ -45,6 +45,7 @@ export default defineEventHandler(async (event) => {
     return {
         success: true,
         articles: articles,
-        count: count.rows[0].count
+        count: count.rows[0].count,
+        message: '获取成功'
     };
 }); 

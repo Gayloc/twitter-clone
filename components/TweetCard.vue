@@ -1,10 +1,10 @@
 <template>
   <v-card class="mb-3" @click="goToDetail">
     <v-img
-      src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+      :src="tweet.cover"
       cover
     />
-    <v-card-title class="d-flex justify-center">{{ tweet.content }}</v-card-title>
+    <v-card-title class="d-flex justify-center">{{ tweet.title }}</v-card-title>
     <v-card-actions>
       <v-btn icon @click.stop="likeTweet">
         <v-icon v-if="isLike">
