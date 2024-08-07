@@ -40,15 +40,6 @@ import { useUserStore } from '~/stores/user';
 const userStore = useUserStore();
 const rating = ref(0);
 
-// 检查是否登录，防止includes报错空对象
-// const isLike
-//   = !userStore.Token ?
-//     false : computed(() => userStore.likeList.includes(tweet.value.id));
-const localePath = useLocalePath();
-const isComment = ref(false);
-
-const isLike = ref(false);
-
 // TODO 从父组件导入标题
 const props = defineProps({
   tweet: {
@@ -61,26 +52,45 @@ const props = defineProps({
 const { tweet } = toRefs(props);
 const router = useRouter();
 
+// 检查是否登录，防止includes报错空对象
+// const isLike
+//   = !userStore.Token ?
+//     false : computed(() => userStore.likeList.includes(tweet.value.id));
+const localePath = useLocalePath();
+const isComment = ref(false);
+
+const isLike = ref(false);
+
 // TODO 点击卡片跳转到详情页
 const goToDetail = () => {
   router.push(localePath(`/detail/${tweet.value.id}`));
 };
 
 // TODO 点赞
-const likeTweet = () => {
+const likeTweet = async () => {
   if (!userStore.Token) {
     ElMessage.error('请先登录');
     return;
   }
-  // TODO: 发送点赞请求
-  // ...
-  if (!isLike.value) {
-    userStore.user.userLikes.push(tweet.value.id);
-    ElMessage.success('点赞成功');
-  } else {
-    userStore.user.userLikes =
-      userStore.user.userLikes.filter(id => id !== tweet.value.id);
-    ElMessage.success('取消点赞成功');
+  try {
+    const response = await $fetch('/api/article/likeArticle', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        articleId: tweet.value.id
+      })
+    });
+    if (!response.success) {
+      ElMessage.error(response.message);
+    }
+    if (response.success) {
+      isLike.value = !isLike.value;
+      ElMessage.success(response.message);
+    }
+  } catch (error) {
+    ElMessage.error(response.message);
   }
 };
 
