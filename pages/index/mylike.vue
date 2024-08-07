@@ -1,36 +1,71 @@
 <template>
-    <v-row v-if="user" class="d-flex flex-wrap">
-        <v-col 
-        v-for="tweet in user.data"
-        :key="tweet.id" 
+    <v-row v-if="pageList" class="d-flex flex-wrap">
+      <v-col
+        cols="12"
+        md="12">
+      <WelcomeCard/>
+      </v-col>
+      <v-col 
+        v-for="tweet in pageList" 
+        :key="tweet.id"
         cols="12"
         md="4"
         >
-        <TweetCard 
-            :tweet="tweet"/>
+        <TweetCard :tweet="tweet" />
+      </v-col>
+      <v-divider/>
+      <v-row class="d-flex justify-center">
+        <v-col cols="8" >
+          <v-container class="max-width ">
+            <v-pagination
+            v-model="page"
+            :length="length"
+            class="my-4"
+            />
+          </v-container>
         </v-col>
-        <v-col 
-        v-if="user.data.length === 0" 
-        cols="16" 
-        md="12" 
-        lg="6" 
-        style="min-width: 100%">
-        <v-empty-state
-            headline="No Messages Yet"
-            text="You haven't received any messages yet.
-            When you do, they'll appear here."
-            title="Check back later."
-        />
-        </v-col>
+      </v-row>
     </v-row>
     <v-alert v-else type="info">{{ $t('loading') }}</v-alert>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import TweetCard from '~/components/TweetCard.vue';
-import { useUserStore } from '~/stores/user';
-const userStore = useUserStore();
-const likes = userStore.likeList;
-console.log(likes);
-const { data: user } = await useFetch('/api/tweets');
+import WelcomeCard from '~/components/WelcomeCard.vue';
+
+const pageList = ref([]);
+const page = ref(1);
+const length = ref(1);
+
+const getList = async () => {
+  try {
+    const response = await $fetch('/api/article/getList', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        page: page.value,
+        pageSize: 15
+      })
+    });
+    if (!response.success) {
+      ElMessage.error(response.message);
+    }
+    if (response.success) {
+      pageList.value = response.articles.rows;
+      length.value = Math.ceil((response.count + 1) / 15);
+    }
+  } catch (error) {
+    ElMessage.error(response.message);
+  }
+};
+
+watch(page, async () => {
+  await getList();
+});
+
+onMounted(async () => {
+  await getList();
+});
 </script>
