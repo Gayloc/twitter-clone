@@ -6,9 +6,21 @@
                     <v-card-title class="headline text-center ">
                         {{ tweet.title }}
                     </v-card-title>
-                    <v-card-text style="font-size: 1.2rem;">
+                    <v-card-text style="font-size: 1.2rem; margin-top: 10px; margin-bottom: 10px;">
                         {{ tweet.main }}
                     </v-card-text>
+                    <v-card-subtitle 
+                        class="text-right text-subtitle-1" 
+                        style="margin-top: 10px; margin-bottom: 5px; margin-right: 10px;"
+                    >
+                        {{ tweet.author_name }}
+                    </v-card-subtitle>
+                    <v-card-subtitle 
+                        class="text-right text-subtitle-1" 
+                        style="margin-bottom: 5px; margin-right: 10px;"
+                    >
+                        {{ tweet.cre_time }}
+                    </v-card-subtitle>
                 </v-card>
                 <v-alert v-else type="info">{{ $t('loading') }}</v-alert>
             </v-col>
@@ -42,5 +54,6 @@ onMounted(async () => {
 <style scoped lang="scss">
 .v-card-title {
     font-size: 2rem;
+    margin-top: 5px;
 }
 </style>
