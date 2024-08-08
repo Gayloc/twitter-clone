@@ -6,7 +6,7 @@
       <WelcomeCard/>
       </v-col>
       <v-col 
-        v-for="(tweet) in pageList" 
+        v-for="(tweet) in filterPageList" 
         :key="tweet.id"
         cols="12"
         md="4"
@@ -32,14 +32,24 @@
 <script setup>
 import TweetCard from '~/components/TweetCard.vue';
 import WelcomeCard from '~/components/WelcomeCard.vue';
+import { useUserStore } from '~/stores/user';
 
 onMounted(async () => {
   await getList();
 });
 
+const userStore = useUserStore();
 const pageList = ref([]);
 const page = ref(1);
 const length = ref(1);
+const filterPageList = ref([]);
+
+const likeList = computed(() => {
+  return userStore.likeList.map(item => item.like_id);
+});
+watch(pageList, () => {
+  filterPageList.value = pageList.value.filter(item => likeList.value.includes(item.id));
+});
 
 const getList = async () => {
   try {
