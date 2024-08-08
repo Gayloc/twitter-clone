@@ -2,18 +2,26 @@
     <v-row class="d-flex justify-center">
         <v-col cols="12">
             <v-col 
-            v-if="true" 
+            v-if="articleList.length === 0" 
             cols="16" 
             md="12" 
             lg="6" 
             style="min-width: 100%">
-            <v-empty-state
+                <v-empty-state
                 headline="No Messages Yet"
                 text="You haven't received any messages yet.
                 When you do, they'll appear here."
                 title="Check back later."
                 @click:action="onClickAction"
-            />
+                />
+            </v-col>
+            <v-col 
+            v-else 
+            cols="16" 
+            md="12" 
+            lg="6" 
+            style="min-width: 100%">
+                <v-card>123</v-card>
             </v-col>
         </v-col>
         <v-divider/>
