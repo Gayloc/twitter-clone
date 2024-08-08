@@ -56,7 +56,7 @@ const router = useRouter();
 
 const localePath = useLocalePath();
 const isComment = ref(false);
-const isLike = ref(userStore.likeList.map(item => item.like_id).includes(tweet.value.id));
+const isLike = ref(userStore.Token === ''? false : userStore.likeList.map(item => item.like_id).includes(tweet.value.id));
 
 // TODO 点击卡片跳转到详情页
 const goToDetail = () => {

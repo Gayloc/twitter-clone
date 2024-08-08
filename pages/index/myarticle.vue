@@ -2,19 +2,19 @@
     <v-row class="d-flex justify-center">
         <v-col cols="12">
             <v-col 
-        v-if="true" 
-        cols="16" 
-        md="12" 
-        lg="6" 
-        style="min-width: 100%">
-        <v-empty-state
-            headline="No Messages Yet"
-            text="You haven't received any messages yet.
-            When you do, they'll appear here."
-            title="Check back later."
-            @click:action="onClickAction"
-        />
-        </v-col>
+            v-if="true" 
+            cols="16" 
+            md="12" 
+            lg="6" 
+            style="min-width: 100%">
+            <v-empty-state
+                headline="No Messages Yet"
+                text="You haven't received any messages yet.
+                When you do, they'll appear here."
+                title="Check back later."
+                @click:action="onClickAction"
+            />
+            </v-col>
         </v-col>
         <v-divider/>
         <v-divider/>
@@ -53,6 +53,22 @@
 import { QuillEditor } from '@vueup/vue-quill';
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
+const articleList = ref([]);
+
+const getList = async () => {
+  try {
+    const response = await $fetch('/api/article/getList');
+    if (!response.success) {
+      ElMessage.error(response.message);
+    }
+      if (response.success) {
+        articleList.value = articles;
+    }
+  } catch (error) {
+    ElMessage.error(response.message);
+  }
+};
+
 const title = ref('');
 const titleRules = [
   v => !!v || 'Title is required'
@@ -66,4 +82,9 @@ const submit = () => {
     formData.append('content', content.value);
     formData.append('cover', cover.value);
 };
+
+onMounted(async () => {
+    await getList();
+  console.log(articleList.value);
+});
 </script>
