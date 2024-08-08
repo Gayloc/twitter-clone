@@ -6,6 +6,20 @@
       <WelcomeCard/>
       </v-col>
       <v-col 
+            v-if="filterPageList.length === 0" 
+            cols="16" 
+            md="12" 
+            lg="6" 
+            style="min-width: 100%">
+                <v-empty-state
+                headline="No Messages Yet"
+                text="You haven't received any messages yet.
+                When you do, they'll appear here."
+                title="Check back later."
+                @click:action="onClickAction"
+                />
+            </v-col>
+      <v-col 
         v-for="(tweet) in filterPageList" 
         :key="tweet.id"
         cols="12"
