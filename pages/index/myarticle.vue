@@ -60,6 +60,9 @@
 <script setup>
 import { QuillEditor } from '@vueup/vue-quill';
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
+import { useUserStore } from '~/stores/user';
+
+const userStore = useUserStore();
 
 const articleList = ref([]);
 
@@ -88,12 +91,33 @@ const titleRules = [
 const content = ref('');
 const cover = ref('');
 
-const submit = () => {
+const submit = async () => {
+    console.log(title.value, content.value, cover.value);
+    // 获取当前时间
+    const currentTime = new Date();
+    // 转换为时间戳
+    const timestamp = currentTime.getTime();
     const formData = new FormData();
     formData.append('title', title.value);
     formData.append('content', content.value);
     formData.append('cover', cover.value);
-
-    getList();
+    formData.append('cre_time', timestamp);
+    formData.append('author_name', userStore.user.userName);
+    try {
+        const response = await $fetch('/api/article/addArticle', {
+            method: 'POST',
+            body: formData
+        });
+        if (!response.success) {
+            ElMessage.error(response.message);
+        }
+        if (response.success) {
+            ElMessage.success('Article published successfully');
+            getList();
+        }
+    } catch (error) {
+        ElMessage.error(response.message);
+    }
 };
+
 </script>

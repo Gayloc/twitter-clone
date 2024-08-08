@@ -7,7 +7,7 @@
                         {{ tweet.title }}
                     </v-card-title>
                     <v-card-text style="font-size: 1.2rem; margin-top: 10px; margin-bottom: 10px;">
-                        {{ tweet.main }}
+                        <div v-html="tweet.main"/>
                     </v-card-text>
                     <v-card-subtitle 
                         class="text-right text-subtitle-1" 
@@ -19,7 +19,7 @@
                         class="text-right text-subtitle-1" 
                         style="margin-bottom: 5px; margin-right: 10px;"
                     >
-                        {{ tweet.cre_time }}
+                        {{ dayjs(tweet.cre_time).format('YYYY-MM-DD HH:mm:ss') }}
                     </v-card-subtitle>
                 </v-card>
                 <v-alert v-else type="info">{{ $t('loading') }}</v-alert>
@@ -29,6 +29,7 @@
 </template>
 
 <script setup>
+import dayjs from 'dayjs';
 const route = useRoute();
 const tweet = ref(null);
 
