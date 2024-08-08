@@ -56,18 +56,22 @@ import '@vueup/vue-quill/dist/vue-quill.snow.css';
 const articleList = ref([]);
 
 const getList = async () => {
-  try {
-    const response = await $fetch('/api/article/getList');
-    if (!response.success) {
-      ElMessage.error(response.message);
-    }
-      if (response.success) {
-        articleList.value = articles;
-    }
-  } catch (error) {
+    try {
+        const response = await $fetch('/api/article/getMyArticleList', {
+            method: 'GET'
+        });
+        if (!response.success) {
+        ElMessage.error(response.message);
+        }
+        if (response.success) {
+            articleList.value = response.articles;
+        }
+    } catch (error) {
     ElMessage.error(response.message);
-  }
+    }
 };
+
+getList();
 
 const title = ref('');
 const titleRules = [
@@ -81,10 +85,7 @@ const submit = () => {
     formData.append('title', title.value);
     formData.append('content', content.value);
     formData.append('cover', cover.value);
-};
 
-onMounted(async () => {
-    await getList();
-  console.log(articleList.value);
-});
+    getList();
+};
 </script>
