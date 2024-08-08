@@ -2,6 +2,7 @@
   <v-card class="mb-3" @click="goToDetail">
     <v-img
       :src="tweet.cover"
+      style="height: 240px;"
       cover
     />
     <v-card-title class="d-flex justify-center">
