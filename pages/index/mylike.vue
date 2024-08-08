@@ -6,7 +6,7 @@
       <WelcomeCard/>
       </v-col>
       <v-col 
-        v-for="tweet in pageList" 
+        v-for="(tweet) in pageList" 
         :key="tweet.id"
         cols="12"
         md="4"
@@ -32,6 +32,10 @@
 <script setup>
 import TweetCard from '~/components/TweetCard.vue';
 import WelcomeCard from '~/components/WelcomeCard.vue';
+
+onMounted(async () => {
+  await getList();
+});
 
 const pageList = ref([]);
 const page = ref(1);
@@ -62,10 +66,6 @@ const getList = async () => {
 };
 
 watch(page, async () => {
-  await getList();
-});
-
-onMounted(async () => {
   await getList();
 });
 </script>

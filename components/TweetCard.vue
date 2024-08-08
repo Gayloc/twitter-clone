@@ -123,7 +123,7 @@ const commentOnTweet = () => {
 
 // 导出点赞详情给父组件
 defineExpose ({
-  isLike
+  isLike: computed(() => isLike.value)
 });
 </script>
 
