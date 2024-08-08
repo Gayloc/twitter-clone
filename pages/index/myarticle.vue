@@ -22,7 +22,7 @@
             cols="12"
             md="4"
             >
-                <TweetCard :tweet="tweet" />
+                <MyArticleTweetCard :tweet="tweet" @update-list="getList()"/>
             </v-col>
         <v-divider/>
         <v-divider/>
@@ -69,7 +69,7 @@ const getList = async () => {
             method: 'GET'
         });
         if (!response.success) {
-        ElMessage.error(response.message);
+            ElMessage.error(response.message);
         }
         if (response.success) {
             articleList.value = response.articles.rows;
