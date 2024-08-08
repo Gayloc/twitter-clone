@@ -1,5 +1,5 @@
 <template>
-    <v-row class="d-flex justify-center">
+    <v-row class="d-flex flex-wrap">
         <v-col cols="12">
             <v-col 
             v-if="articleList.length === 0" 
@@ -15,15 +15,15 @@
                 @click:action="onClickAction"
                 />
             </v-col>
-            <v-col 
-            v-else 
-            cols="16" 
-            md="12" 
-            lg="6" 
-            style="min-width: 100%">
-                <v-card>123</v-card>
-            </v-col>
         </v-col>
+        <v-col 
+            v-for="tweet in articleList"
+            :key="tweet.id"
+            cols="12"
+            md="4"
+            >
+                <TweetCard :tweet="tweet" />
+            </v-col>
         <v-divider/>
         <v-divider/>
         <v-card style="min-width: 100%;" variant="outlined">
@@ -72,7 +72,7 @@ const getList = async () => {
         ElMessage.error(response.message);
         }
         if (response.success) {
-            articleList.value = response.articles;
+            articleList.value = response.articles.rows;
         }
     } catch (error) {
     ElMessage.error(response.message);
