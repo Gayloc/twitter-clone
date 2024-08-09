@@ -68,7 +68,7 @@ const goToDetail = () => {
 const setUserStore = async () => {
   // TODO 调用接口获取用户信息
   const response =
-    await $fetch('/api/user/userInfo');
+    await $fetch('/api/user/getUserInfo');
     // TODO 成功操作
   if (response.success) {
     userStore.setUser(response.userIn);

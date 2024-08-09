@@ -130,12 +130,11 @@ const emailRules = ref( [
   const setUserStore = async () => {
     // TODO 获取用户信息
   const response =
-      await $fetch('/api/user/userInfo');
+      await $fetch('/api/user/getUserInfo');
     // TODO 成功操作
   if (response.success) {
     userStore.setUser(response.userIn);
     ElMessage.success(response.message);
-    console.log(userStore.user);
   }
   // TODO 失败操作
   if (!response.success) {
