@@ -14,9 +14,9 @@ interface listBody {
     pageSize: number;
 }
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async () => {
     // 读取请求体
-    const body = await readBody<listBody>(event);
+    const body = await readBody<listBody>(useEvent());
 
     if (!body || !body.page || !body.pageSize) {
         throw createError({

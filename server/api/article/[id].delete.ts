@@ -13,16 +13,16 @@ interface articleList {
     rows: article[];
 }
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async () => {
     // 验证用户是否登录
-    await authMiddle(event);
+    await authMiddle(useEvent());
 
     // 获取用户信息
-    const userInfo = event.context.auth;
+    const userInfo = useEvent().context.auth;
 
     const user_id = userInfo.userId;
 
-    const id = getRouterParam(event, 'id');
+    const id = getRouterParam(useEvent(), 'id');
 
     const db = useDatabase();
 
