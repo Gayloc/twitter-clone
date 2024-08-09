@@ -135,6 +135,7 @@ const emailRules = ref( [
   if (response.success) {
     userStore.setUser(response.userIn);
     ElMessage.success(response.message);
+    console.log(userStore.user);
   }
   // TODO 失败操作
   if (!response.success) {
