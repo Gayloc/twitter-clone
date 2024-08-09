@@ -74,7 +74,7 @@ const getList = async () => {
       },
       body: JSON.stringify({
         page: page.value,
-        pageSize: 15
+        pageSize: 150
       })
     });
     if (!response.success) {
@@ -82,7 +82,7 @@ const getList = async () => {
     }
     if (response.success) {
       pageList.value = response.articles.rows;
-      length.value = Math.ceil((response.count + 1) / 15);
+      length.value = Math.ceil((response.count + 1) / 150);
     }
   } catch (error) {
     ElMessage.error(response.message);
