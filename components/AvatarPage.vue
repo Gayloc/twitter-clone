@@ -27,10 +27,22 @@
   </template>
   
   <script setup>
-import { ref } from 'vue';
-const avatar = defineModel('avatar', ref(null));
-const avatarPreview = ref(null);
-const fileInput = ref(null);
+  import { ref } from 'vue';
+  import { useUserStore } from '~/stores/user';
+
+  // 用户信息
+  const userStore = useUserStore();
+
+  // TODO 将图片穿透到父组件
+  const avatar = defineModel('avatar', ref(null));
+
+// 图片预览
+  const avatarPreview = ref(userStore.user.avatar);
+
+  // 文件输入框
+  const fileInput = ref(null);
+
+  // TODO 上传图片，同时切换图片预览
 const onFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -41,7 +53,9 @@ const onFileChange = (e) => {
         };
         reader.readAsDataURL(file);
     }
-};
+  };
+
+  // TODO 触发文件输入框
 const triggerFileInput = () => {
     fileInput.value.click();
 };

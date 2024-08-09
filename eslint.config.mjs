@@ -21,7 +21,7 @@ export default withNuxt(
       'max-len': [
       'warn',
       {
-        code: 90, // 设置最大行长度为80字符
+        code: 150, // 设置最大行长度为150字符
         ignoreUrls: true, // 不检查URL长度
         ignoreStrings: true, // 不检查字符串长度
         ignoreRegExpLiterals: true, // 不检查正则表达式字面量长度

@@ -11,11 +11,13 @@
 </template>
 
 <script setup>
+// 路由
 const router = useRouter();
 const colorMode = useColorMode();
 const { locale, setLocale } = useI18n();
 const localePath = useLocalePath();
 
+// TODO 切换主题
 const toggleTheme = () => {
     if (colorMode.value === 'light') {
         colorMode.preference = 'dark';
@@ -24,6 +26,7 @@ const toggleTheme = () => {
     }
 };
 
+// 返回上一页
 const goBack = () => {
     router.go(-1);
 };
