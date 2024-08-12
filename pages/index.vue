@@ -1,3 +1,4 @@
+<!-- index.vue -->
 <template>
   <v-container >
     <v-navigation-drawer

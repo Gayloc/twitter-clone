@@ -1,3 +1,4 @@
+<!-- about.vue -->
 <template>
     <v-container class="about-page">
       <v-row class="d-flex justify-center mt-5">

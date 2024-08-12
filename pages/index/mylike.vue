@@ -1,3 +1,4 @@
+<!-- mylike.vue -->
 <template>
     <v-row v-if="pageList" class="d-flex flex-wrap">
       <v-col

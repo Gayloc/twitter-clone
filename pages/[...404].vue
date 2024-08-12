@@ -1,3 +1,4 @@
+<!-- [...404].vue -->
 <template>
     <v-empty-state
   headline="Whoops, 404"

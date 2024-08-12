@@ -1,3 +1,4 @@
+<!-- myarticle.vue -->
 <template>
     <v-row class="d-flex flex-wrap">
         <v-col cols="12">
