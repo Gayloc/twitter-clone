@@ -1,3 +1,4 @@
+<!-- AvatarPage.vue -->
 <template>
     <v-container>
             <v-avatar

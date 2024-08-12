@@ -1,3 +1,4 @@
+<!-- NavBar.vue -->
 <template>
     <v-app-bar app>
         <v-btn icon="mdi-arrow-left" @click="goBack"/>

@@ -1,3 +1,4 @@
+<!-- MyArticleTweetCard.vue -->
 <template>
     <v-card class="mb-3" @click="goToDetail">
       <v-img

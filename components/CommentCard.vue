@@ -1,3 +1,4 @@
+<!-- CommentCard.vue -->
 <template>
     <div>
         {{ title }}

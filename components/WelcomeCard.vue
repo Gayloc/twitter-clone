@@ -1,3 +1,4 @@
+<!-- WelcomeCard.vue -->
 <template>
     <v-card 
         class="pa-3 d-flex justify-end"
