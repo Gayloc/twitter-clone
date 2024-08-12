@@ -1,3 +1,4 @@
+<!-- WelcomeCard.vue -->
 <template>
     <v-card 
         class="pa-3 d-flex justify-end"
@@ -23,10 +24,11 @@
 </template>
 
 <script setup>
+// 定义数据
 const currentTime = ref('');
 const hours = ref('');
 
-// 方法：更新当前时间
+// TODO 方法：更新当前时间
 const updateTime = () => {
   const now = new Date();
   const year = now.getFullYear();
@@ -38,6 +40,7 @@ const updateTime = () => {
   currentTime.value = `${year}-${month}-${day} ${hours.value}:${minutes}:${seconds}`;
 };
 
+// TODO 计算属性：根据当前时间显示问候语
 const hello = computed(() => {
     if (hours.value >= 6 && hours.value < 12) {
         return '早上好！';
@@ -50,14 +53,14 @@ const hello = computed(() => {
     }
 });
 
-// 生命周期钩子：组件挂载时启动定时器
+// TODO 生命周期钩子：组件挂载时启动定时器
 let timer;
 onMounted(() => {
   updateTime(); // 初始化时间显示
   timer = setInterval(updateTime, 1000);
 });
 
-// 生命周期钩子：组件销毁时清除定时器
+// TODO 生命周期钩子：组件销毁时清除定时器
 onUnmounted(() => {
   clearInterval(timer);
 });

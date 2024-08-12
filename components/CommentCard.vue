@@ -1,3 +1,4 @@
+<!-- CommentCard.vue -->
 <template>
     <div>
         {{ title }}
@@ -5,6 +6,7 @@
 </template>
 
 <script lang="ts" setup>
+// TODO 从父组件获取评论标题
 const props = defineProps({
   title: {
     type: String,

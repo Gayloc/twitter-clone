@@ -1,3 +1,4 @@
+<!-- default.vue -->
 <template>
   <v-app v-if="!$colorMode.unknown">
     {{ $vuetify.theme.global.name = $colorMode.value }}

@@ -1,10 +1,14 @@
+<!-- TweetCard.vue -->
 <template>
   <v-card class="mb-3" @click="goToDetail">
     <v-img
-      src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+      :src="tweet.cover"
+      style="height: 240px;"
       cover
     />
-    <v-card-title class="d-flex justify-center">{{ tweet.content }}</v-card-title>
+    <v-card-title class="d-flex justify-center">
+      {{ tweet.title === '' ? '无标题' : tweet.title }}
+    </v-card-title>
     <v-card-actions>
       <v-btn icon @click.stop="likeTweet">
         <v-icon v-if="isLike">
@@ -35,19 +39,12 @@
 </template>
 
 <script setup>
+// 导入用户设置
 import { useUserStore } from '~/stores/user';
 const userStore = useUserStore();
 const rating = ref(0);
 
-// 检查是否登录，防止includes报错空对象
-// const isLike
-//   = !userStore.Token ?
-//     false : computed(() => userStore.likeList.includes(tweet.value.id));
-const localePath = useLocalePath();
-const isComment = ref(false);
-
-const isLike = ref(false);
-
+// TODO 从父组件导入标题
 const props = defineProps({
   tweet: {
     type: Object,
@@ -55,30 +52,66 @@ const props = defineProps({
   }
 });
 
+// 展开标题
 const { tweet } = toRefs(props);
 const router = useRouter();
 
+const localePath = useLocalePath();
+const isComment = ref(false);
+const isLike = ref(userStore.Token === ''? false : userStore.likeList.map(item => item.like_id).includes(tweet.value.id));
+
+// TODO 点击卡片跳转到详情页
 const goToDetail = () => {
   router.push(localePath(`/detail/${tweet.value.id}`));
 };
 
-const likeTweet = () => {
+// TODO 获取用户信息函数
+const setUserStore = async () => {
+  // TODO 调用接口获取用户信息
+  const response =
+    await $fetch('/api/user/getUserInfo');
+    // TODO 成功操作
+  if (response.success) {
+    userStore.setUser(response.userIn);
+    userStore.setLikeList(response.likes);
+    ElMessage.success(response.message);
+  }
+  // TODO 失败操作
+  if (!response.success) {
+    ElMessage.error(response.message);
+  }
+};
+
+// TODO 点赞
+const likeTweet = async () => {
   if (!userStore.Token) {
     ElMessage.error('请先登录');
     return;
   }
-  // TODO: 发送点赞请求
-  // ...
-  if (!isLike.value) {
-    userStore.user.userLikes.push(tweet.value.id);
-    ElMessage.success('点赞成功');
-  } else {
-    userStore.user.userLikes =
-      userStore.user.userLikes.filter(id => id !== tweet.value.id);
-    ElMessage.success('取消点赞成功');
+  try {
+    const response = await $fetch('/api/article/likeArticle', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        articleId: tweet.value.id
+      })
+    });
+    if (!response.success) {
+      ElMessage.error(response.message);
+    }
+    if (response.success) {
+      isLike.value = !isLike.value;
+      ElMessage.success(response.message);
+      setUserStore();
+    }
+  } catch (error) {
+    ElMessage.error(response.message);
   }
 };
 
+// TODO 评论页
 const commentOnTweet = () => {
   if (!userStore.Token) {
     ElMessage.error('请先登录');
@@ -89,8 +122,9 @@ const commentOnTweet = () => {
   // ...
 };
 
+// 导出点赞详情给父组件
 defineExpose ({
-  isLike
+  isLike: computed(() => isLike.value)
 });
 </script>
 
@@ -102,5 +136,12 @@ defineExpose ({
 .comment {
   width: 80%;
   margin-left: 5%;
+}
+
+.v-card-title {
+  font-size: 1.2rem;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
 }
 </style>

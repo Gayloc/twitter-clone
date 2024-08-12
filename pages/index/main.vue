@@ -1,12 +1,13 @@
+<!-- main.vue -->
 <template>
-    <v-row v-if="user" class="d-flex flex-wrap">
+    <v-row v-if="pageList" class="d-flex flex-wrap">
       <v-col
         cols="12"
         md="12">
       <WelcomeCard/>
       </v-col>
       <v-col 
-        v-for="tweet in user.data" 
+        v-for="tweet in pageList" 
         :key="tweet.id"
         cols="12"
         md="4"
@@ -33,8 +34,39 @@
 import TweetCard from '~/components/TweetCard.vue';
 import WelcomeCard from '~/components/WelcomeCard.vue';
 
+const pageList = ref([]);
 const page = ref(1);
-const length = ref(15);
+const length = ref(1);
 
-const { data: user } = await useFetch('/api/tweets');
+const getList = async () => {
+  try {
+    const response = await $fetch('/api/article/getList', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        page: page.value,
+        pageSize: 15
+      })
+    });
+    if (!response.success) {
+      ElMessage.error(response.message);
+    }
+    if (response.success) {
+      pageList.value = response.articles.rows;
+      length.value = Math.ceil((response.count + 1) / 15);
+    }
+  } catch (error) {
+    ElMessage.error(response.message);
+  }
+};
+
+watch(page, async () => {
+  await getList();
+});
+
+onMounted(async () => {
+  await getList();
+});
 </script>
