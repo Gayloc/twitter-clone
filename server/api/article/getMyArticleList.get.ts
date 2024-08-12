@@ -1,3 +1,4 @@
+// getMyArticleList.get.ts
 import authMiddle from '~/server/utils/auth';
 
 interface article {

@@ -1,4 +1,4 @@
-
+// getList.post.ts
 interface article {
     id: number;
     title: string;

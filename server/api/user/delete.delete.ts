@@ -1,3 +1,4 @@
+// delete.delete.ts
 import authMiddle from '~/server/utils/auth';
 import bcrypt from 'bcrypt';
 

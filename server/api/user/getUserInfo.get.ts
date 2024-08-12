@@ -1,3 +1,4 @@
+// getUserInfo.get.ts
 import authMiddle from '~/server/utils/auth';
 
 // 用户信息

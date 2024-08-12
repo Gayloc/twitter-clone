@@ -1,3 +1,4 @@
+// logout.get.ts
 export default defineEventHandler(async (event) => {
     // 清除 cookie
     setCookie(event, 'auth_token', '', {

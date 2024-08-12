@@ -1,3 +1,4 @@
+// register.post.ts
 import bcrypt from 'bcrypt';
 
 // 注册请求体

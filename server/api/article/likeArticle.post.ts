@@ -1,3 +1,4 @@
+// likeArticle.post.ts
 import authMiddle from '~/server/utils/auth';
 
 interface sendBody {

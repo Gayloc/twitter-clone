@@ -1,3 +1,4 @@
+// [id].get.ts
 interface article {
     id: number;
     author_id: number;

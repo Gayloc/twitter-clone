@@ -1,9 +1,10 @@
+<!-- [id].vue -->
 <template>
     <v-container>
         <v-row class="d-flex justify-center">
             <v-col cols="12" md="9">
                 <v-card v-if="tweet" style="width: 100%;">
-                    <v-card-title class="headline text-center ">
+                    <v-card-title class="headline text-center">
                         {{ tweet.title }}
                     </v-card-title>
                     <v-card-text style="font-size: 1.2rem; margin-top: 10px; margin-bottom: 10px;">
