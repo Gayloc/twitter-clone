@@ -10,8 +10,8 @@
             :subtitle="moment.utc(comment.created_at).tz(userTimeZone).format('YYYY-MM-DD HH:mm:ss')" :variant="'flat'">
             <template #append>
                 <v-card-actions>
-                    <v-btn :href="`mailto:${users[index].email}?subject=Re:${comment.content}`">email</v-btn>
-                    <v-btn>profile</v-btn>
+                    <v-btn :href="`mailto:${users[index].email}?subject=Re:${comment.content}`">{{ $t('email') }}</v-btn>
+                    <v-btn>{{ $t('profile') }}</v-btn>
                 </v-card-actions>
             </template>
             <v-card-text>

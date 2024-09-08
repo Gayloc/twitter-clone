@@ -2,25 +2,27 @@
     <v-container>
         <v-row class="d-flex justify-center">
             <v-col>
-                <v-alert type="error" v-if="error != null">
+                <v-alert v-if="error != null" type="error">
                     {{ error }}
                 </v-alert>
-                <v-card :prepend-avatar="avatar_url" :title="user.username" :subtitle="userTime" v-if="user != null">
-                    <template v-slot:append>
+                <v-card v-if="user != null" :prepend-avatar="avatar_url" :title="user.username" :subtitle="userTime">
+                    <template #append>
                         <v-card-actions>
-                            <v-btn :href="`mailto:${user.email}?subject=Re:${tweet.content}`">email</v-btn>
-                            <v-btn :href="`mailto:${user.email}?subject=Re:${tweet.content}`">follow</v-btn>
-                            <v-btn :href="`mailto:${user.email}?subject=Re:${tweet.content}`">profile</v-btn>
+                            <v-btn :href="`mailto:${user.email}?subject=Re:${tweet.content}`">{{ $t('email') }}</v-btn>
+                            <v-btn :href="`mailto:${user.email}?subject=Re:${tweet.content}`">{{ $t('follow') }}</v-btn>
+                            <v-btn :href="`mailto:${user.email}?subject=Re:${tweet.content}`">{{ $t('profile') }}</v-btn>
                         </v-card-actions>
                     </template>
                     <v-card-text>{{ tweet.content }}</v-card-text>
                     <v-card-text>
-                        <v-carousel @click.stop v-if="images.length > 0" show-arrows="hover" progress hide-delimiters>
-                            <v-carousel-item v-for="image in images" :key="image.media_id"
-                                :src="image.media_url"></v-carousel-item>
+                        <v-carousel v-if="images.length > 0" show-arrows="hover" progress hide-delimiters @click.stop>
+                            <v-carousel-item
+                                v-for="image in images" :key="image.media_id"
+                                :src="image.media_url"/>
                         </v-carousel>
-                        <video controls :src="video" v-if="video != null" width="100%" style="max-height: 70vh;"
-                            @click.stop></video>
+                        <video
+                                v-if="video != null" controls :src="video" width="100%" style="max-height: 70vh;"
+                                @click.stop/>
                     </v-card-text>
                     <v-card-actions class="d-flex justify-end">
                         <v-btn icon @click.stop="likeTweet">
@@ -32,7 +34,7 @@
                             </v-icon>
                         </v-btn>
                     </v-card-actions>
-                    <CommentEditor :tweetId="$route.params.id" />
+                    <CommentEditor :tweet-id="$route.params.id" />
                 </v-card>
                 <v-alert v-else type="info">{{ $t('loading') }}</v-alert>
             </v-col>
@@ -87,7 +89,7 @@ try {
         if (media_data.data[0].media_type == "video") {
             video.value = media_data.data[0].media_url
         } else {
-            for (let data of media_data.data) {
+            for (const data of media_data.data) {
                 images.value.push(data)
             }
         }

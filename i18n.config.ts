@@ -40,6 +40,8 @@ export default defineI18nConfig(() => ({
       commentAreaTitle: 'Comments',
       loginFirst: 'Login first',
       inputComments: 'Input your comment',
+      follow: 'Follow',
+      profile: 'Profile',
       $vuetify: {
         input: {
           prependAction: 'Add image',
@@ -102,6 +104,8 @@ export default defineI18nConfig(() => ({
       commentAreaTitle: '评论',
       loginFirst: '请先登录',
       inputComments: '输入你的点评',
+      follow: '关注',
+      profile: '个人资料',
       $vuetify: {
         input: {
           prependAction: '添加图片',
