@@ -1,7 +1,7 @@
 <template>
     <v-container v-if="user != null">
         <v-card>
-            <Avatar :user="user"></Avatar>
+            <Avatar :user="user"/>
             <v-card-title class="headline">
                 {{ user.username }}
             </v-card-title>
@@ -14,10 +14,10 @@
                 <v-btn text @click.stop="logout">{{ $t('logout') }}</v-btn>
             </v-card-actions>
         </v-card>
+        <v-alert v-if="error != null" type="error">
+            {{ error }}
+        </v-alert>
     </v-container>
-    <v-alert type="error" v-if="error != null">
-        {{ error }}
-    </v-alert>
 </template>
 
 <script setup>
@@ -34,8 +34,12 @@ onMounted(async () => {
     try {
         const data = await $fetch('/api/auth/user');
         user.value = data.user;
-        const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        userTime.value = moment.utc(user.value.created_at).tz(userTimeZone).format('YYYY-MM-DD HH:mm:ss');
+        if (data.success) {
+            const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            userTime.value = moment.utc(user.value.created_at).tz(userTimeZone).format('YYYY-MM-DD HH:mm:ss');
+        } else {
+            navigateTo(localePath('/login'))
+        }
     } catch (err) {
         if (err.statusCode == 401) {
             navigateTo(localePath('/login'))

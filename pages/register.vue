@@ -6,12 +6,17 @@
                     <v-card-title class="headline">{{ $t('register') }}</v-card-title>
                     <v-card-text>
                         <v-form>
-                            <v-text-field v-model="username" :label="$t('username')" :rules="[required]" autocomplete="username"/>
-                            <v-text-field v-model="email" :label="$t('email')" :rules="[required]" autocomplete="email"/>
-                            <v-text-field v-model="password" :label="$t('password')" type="password"
-                                :rules="[required]" autocomplete="new-password"/>
+                            <v-text-field
+                                v-model="username" :label="$t('username')" :rules="[required]"
+                                autocomplete="username" />
+                            <v-text-field
+                                v-model="email" :label="$t('email')" :rules="[required]"
+                                autocomplete="email" />
+                            <v-text-field
+                                v-model="password" :label="$t('password')" type="password" :rules="[required]"
+                                autocomplete="new-password" />
                         </v-form>
-                        <v-alert type="error" v-if="error != null">
+                        <v-alert v-if="error != null" type="error">
                             {{ error }}
                         </v-alert>
                     </v-card-text>

@@ -9,7 +9,7 @@
               <v-text-field v-model="email" :label="$t('email')" :rules="[required]" autocomplete="username"/>
               <v-text-field v-model="password" :label="$t('password')" type="password" :rules="[required]" autocomplete="current-password"/>
             </v-form>
-            <v-alert type="error" v-if="error != null">
+            <v-alert v-if="error != null" type="error">
               {{ error }}
             </v-alert>
           </v-card-text>

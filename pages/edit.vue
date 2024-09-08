@@ -6,17 +6,17 @@
                     <v-card-title>{{ $t('newTweetEdit') }}</v-card-title>
                     <v-card-text>
                         <v-form>
-                            <v-textarea :label="$t('content')" v-model="content" auto-grow></v-textarea>
+                            <v-textarea v-model="content" :label="$t('content')" auto-grow/>
                         </v-form>
                     </v-card-text>
-                    <MediaEditor ref="mediaEditorRef"></MediaEditor>
+                    <MediaEditor ref="mediaEditorRef"/>
                     <v-card-actions>
-                        <v-btn text @click="postTweet" :disabled="content == ''">{{ $t('post') }}</v-btn>
+                        <v-btn text :disabled="content == ''" @click="postTweet">{{ $t('post') }}</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-col>
         </v-row>
-        <v-alert type="error" v-if="error != null">
+        <v-alert v-if="error != null" type="error">
             {{ error }}
         </v-alert>
     </v-container>
