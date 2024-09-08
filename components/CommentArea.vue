@@ -25,7 +25,9 @@
 <script setup>
 import moment from 'moment-timezone';
 
-const props = defineProps(['tweetId']);
+const props = defineProps({
+    tweetId: number
+});
 const error = ref(null)
 const comments = ref([])
 const users = ref([])

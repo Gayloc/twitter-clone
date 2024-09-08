@@ -30,7 +30,9 @@
 </template>
 
 <script setup>
-const props = defineProps(['user']);
+const props = defineProps({
+  user: string
+});
 const src = ref('/icon.png')
 const sheet = ref(false)
 const file = ref(null)

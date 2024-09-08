@@ -28,7 +28,9 @@ const user = ref(null)
 const avatar_url = ref('/icon.png')
 const error = ref(null)
 const comment = ref('')
-const props = defineProps(['tweetId']);
+const props = defineProps({
+    tweetId: number
+});
 const areaRef = ref(null)
 
 onMounted(async () => {
