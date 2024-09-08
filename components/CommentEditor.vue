@@ -29,7 +29,7 @@ const avatar_url = ref('/icon.png')
 const error = ref(null)
 const comment = ref('')
 const props = defineProps({
-    tweetId: number
+    tweetId: Number()
 });
 const areaRef = ref(null)
 

@@ -26,7 +26,7 @@
 import moment from 'moment-timezone';
 
 const props = defineProps({
-    tweetId: number
+    tweetId: Number()
 });
 const error = ref(null)
 const comments = ref([])

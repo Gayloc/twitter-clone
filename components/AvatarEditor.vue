@@ -31,7 +31,7 @@
 
 <script setup>
 const props = defineProps({
-  user: string
+  user: String()
 });
 const src = ref('/icon.png')
 const sheet = ref(false)
