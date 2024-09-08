@@ -6,7 +6,8 @@
                     {{ $t('MediaSelector') }}
                     <v-menu activator="parent">
                         <v-list>
-                            <v-list-item v-for="(item, index) in items" :key="index" :value="index"
+                            <v-list-item
+                                v-for="(item, index) in items" :key="index" :value="index"
                                 @click="selectedMedia = index">
                                 <v-list-item-title>{{ item }}</v-list-item-title>
                             </v-list-item>
@@ -14,10 +15,12 @@
                     </v-menu>
                 </v-btn>
 
-                <v-file-input :label="$t('uploadImages')" v-model="imageFiles" accept="image/*" multiple
-                    v-if="selectedMedia == 1" @change="handleFileChange"></v-file-input>
-                <v-file-input :label="$t('uploadvideo')" v-model="videoFile" accept="video/*"
-                    v-if="selectedMedia == 2"></v-file-input>
+                <v-file-input
+                    v-if="selectedMedia == 1" v-model="imageFiles" :label="$t('uploadImages')" accept="image/*"
+                    multiple @change="handleFileChange"/>
+                <v-file-input
+                    v-if="selectedMedia == 2" v-model="videoFile" :label="$t('uploadvideo')"
+                    accept="video/*"/>
             </v-col>
         </v-row>
     </v-container>

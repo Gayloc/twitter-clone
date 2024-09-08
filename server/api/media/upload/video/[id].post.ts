@@ -1,5 +1,5 @@
 import { IncomingForm } from 'formidable'
-import { mkdirSync, renameSync } from 'fs'
+import { mkdirSync, copyFileSync, unlinkSync } from 'fs'
 import { join } from 'path'
 
 export default defineEventHandler(async (event) => {
@@ -40,7 +40,12 @@ export default defineEventHandler(async (event) => {
       }
 
       const filePath = join(uploadDir, file.originalFilename)
-      renameSync(file.filepath, filePath)
+      try {
+        copyFileSync(file.filepath, filePath)
+        unlinkSync(file.filepath) // Delete the temporary file after copying
+      } catch (copyError) {
+        return reject(copyError)
+      }
 
       const runtimeConfig = useRuntimeConfig()
       await db.sql`INSERT INTO Media (tweet_id, media_url, media_type) VALUES (${tweetId}, ${`${runtimeConfig.image_server}/media/${tweetId}/${file.originalFilename}`}, ${'video'})`

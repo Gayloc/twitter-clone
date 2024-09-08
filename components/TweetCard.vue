@@ -1,17 +1,18 @@
 <template>
-  <v-card class="mb-3" @click="goToDetail" :prepend-avatar="avatar_url" :title="user.username" :subtitle="userTime"
-    v-if="user != null" style="display: flex; flex-direction: column;">
-    <v-divider></v-divider>
-    <v-alert type="error" v-if="error != null">
+  <v-card
+    v-if="user != null" class="mb-3" :prepend-avatar="avatar_url" :title="user.username" :subtitle="userTime"
+    style="display: flex; flex-direction: column;" @click="goToDetail">
+    <v-divider/>
+    <v-alert v-if="error != null" type="error">
       {{ error }}
     </v-alert>
     <v-card-text :class="{'text-content': !hasMedia, 'content': hasMedia}">
       {{ tweet.content }}
     </v-card-text>
     <v-carousel v-if="images.length > 0" height="300px" cycle :show-arrows="false" hide-delimiters>
-      <v-carousel-item v-for="image in images" :key="image.media_id" :src="image.media_url" cover></v-carousel-item>
+      <v-carousel-item v-for="image in images" :key="image.media_id" :src="image.media_url" cover/>
     </v-carousel>
-    <video :src="video" v-if="video != null" height="300px" muted autoplay loop></video>
+    <video v-if="video != null" :src="video" height="300px" muted autoplay loop/>
     <v-card-actions class="d-flex justify-end">
       <v-btn icon @click.stop="likeTweet">
         <v-icon v-if="isLike">
@@ -82,12 +83,13 @@ onMounted(async () => {
       if (media_data.data[0].media_type == "video") {
         video.value = media_data.data[0].media_url
       } else {
-        for (let data of media_data.data) {
+        for (const data of media_data.data) {
           images.value.push(data)
         }
       }
     }
-  } catch {
+  } catch(err) {
+    error.value = err
   }
   updateLike()
 })

@@ -1,7 +1,7 @@
 <template>
   <v-card image="/card-image.jpg" class="d-flex justify-space-between align-center card">
     <v-avatar size="200">
-      <v-img cover :src='src'></v-img>
+      <v-img cover :src='src'/>
     </v-avatar>
     <v-card-actions>
       <v-btn text color="yellow-lighten-2" @click="sheet = !sheet">{{ $t('changeAvatar') }}</v-btn>
@@ -10,19 +10,20 @@
   <v-bottom-sheet v-model="sheet" inset>
     <v-card class="text-center card">
       <v-card-text>
-        <v-file-input :label="$t('inputImage')" v-model="file" accept="image/*"
-          prepend-icon="mdi-camera"></v-file-input>
+        <v-file-input
+          v-model="file" :label="$t('inputImage')" accept="image/*"
+          prepend-icon="mdi-camera"/>
       </v-card-text>
       <v-card-actions>
-        <v-btn @click="submit" text>{{ $t('upload') }}</v-btn>
-        <v-btn @click="sheet = !sheet" text>{{ $t('close') }}</v-btn>
+        <v-btn text @click="submit">{{ $t('upload') }}</v-btn>
+        <v-btn text @click="sheet = !sheet">{{ $t('close') }}</v-btn>
       </v-card-actions>
     </v-card>
   </v-bottom-sheet>
   <v-dialog v-model="dialog" width="auto">
     <v-card max-width="400" prepend-icon="mdi-update" :text="$t('inputImageFirst')" :title="$t('noSelectedFile')">
-      <template v-slot:actions>
-        <v-btn class="ms-auto" text="Ok" @click="dialog = false"></v-btn>
+      <template #actions>
+        <v-btn class="ms-auto" text="Ok" @click="dialog = false"/>
       </template>
     </v-card>
   </v-dialog>

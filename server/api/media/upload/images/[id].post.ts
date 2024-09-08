@@ -1,5 +1,5 @@
 import { IncomingForm } from 'formidable'
-import { mkdirSync, renameSync } from 'fs'
+import { mkdirSync, copyFileSync, unlinkSync } from 'fs'
 import { join } from 'path'
 
 export default defineEventHandler(async (event) => {
@@ -31,7 +31,7 @@ export default defineEventHandler(async (event) => {
 
       const db = useDatabase()
       const fileArray = Array.isArray(files.file) ? files.file : [files.file]
-      let data = []
+      const data = []
 
       for (const f of fileArray) {
         if (f.originalFilename == null) {
@@ -42,7 +42,13 @@ export default defineEventHandler(async (event) => {
         }
 
         const filePath = join(uploadDir, f.originalFilename)
-        renameSync(f.filepath, filePath)
+        // Copy file instead of renaming it, then delete the original
+        try {
+          copyFileSync(f.filepath, filePath)
+          unlinkSync(f.filepath) // Delete the temporary file after copying
+        } catch (copyError) {
+          return reject(copyError)
+        }
 
         const runtimeConfig = useRuntimeConfig()
         await db.sql`INSERT INTO Media (tweet_id, media_url, media_type) VALUES (${tweetId}, ${`${runtimeConfig.image_server}/media/${tweetId}/${f.originalFilename}`}, ${'image'})`

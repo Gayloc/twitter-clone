@@ -1,5 +1,5 @@
 import { IncomingForm } from 'formidable'
-import { mkdirSync, renameSync } from 'fs'
+import { mkdirSync, copyFileSync, unlinkSync } from 'fs'
 import { join } from 'path'
 
 export default defineEventHandler(async (event) => {
@@ -23,35 +23,43 @@ export default defineEventHandler(async (event) => {
       }
 
       if (files.file == undefined) {
-        throw createError({
+        return reject(createError({
           statusCode: 401,
           statusMessage: 'Invalid file'
-        })
+        }))
       }
 
       const db = useDatabase()
       const file = files.file[0]
 
       if (file.originalFilename == null) {
-        throw createError({
+        return reject(createError({
           statusCode: 401,
           statusMessage: 'Invalid filename'
-        })
+        }))
       }
 
       const newFilename = `${userId}${file.originalFilename.slice(file.originalFilename.lastIndexOf('.'))}`
       const filePath = join(uploadDir, newFilename)
-      renameSync(file.filepath, filePath)
+
+      // Copy file instead of renaming it, then delete the original
+      try {
+        copyFileSync(file.filepath, filePath)
+        unlinkSync(file.filepath) // Delete the temporary file after copying
+      } catch (copyError) {
+        return reject(copyError)
+      }
 
       const runtimeConfig = useRuntimeConfig()
       await db.sql`UPDATE Avatar SET avatar_url = ${`${runtimeConfig.image_server}/avatars/${userId}/${newFilename}`} WHERE user_id = ${userId}`
 
-      resolve({ 
+      resolve({
         statusCode: 200,
-        body: JSON.stringify({
-          userId, filePath: `${process.env.image_server}/avatars/${userId}/${newFilename}`
-        })
-       })
+        data: {
+          userId,
+          filePath: `${runtimeConfig.image_server}/avatars/${userId}/${newFilename}`
+        }
+      })
     })
   })
 })

@@ -1,23 +1,23 @@
 <template>
-    <v-card :prepend-avatar="avatar_url" :title="user.username" :subtitle="user.email" v-if="user != null">
-        <v-alert type="error" v-if="error != null">
+    <v-card v-if="user != null" :prepend-avatar="avatar_url" :title="user.username" :subtitle="user.email">
+        <v-alert v-if="error != null" type="error">
             {{ error }}
         </v-alert>
         <v-card-text>
             <v-form>
-                <v-textarea :label="$t('inputComments')" v-model="comment" auto-grow></v-textarea>
+                <v-textarea v-model="comment" :label="$t('inputComments')" auto-grow/>
             </v-form>
         </v-card-text>
         <v-card-actions>
             <v-btn text @click="postComment">{{ $t('postComment') }}</v-btn>
         </v-card-actions>
         <v-card-title>{{ $t('commentAreaTitle') }}</v-card-title>
-        <CommentArea :tweetId="props['tweetId']" ref="areaRef" />
+        <CommentArea ref="areaRef" :tweet-id="props['tweetId']" />
     </v-card>
     <v-card v-else>
         <v-card-title>{{ $t('loginFirst') }}</v-card-title>
         <v-card-title>{{ $t('commentAreaTitle') }}</v-card-title>
-        <CommentArea :tweetId="props['tweetId']" ref="areaRef" />
+        <CommentArea ref="areaRef" :tweet-id="props['tweetId']" />
     </v-card>
 </template>
 
